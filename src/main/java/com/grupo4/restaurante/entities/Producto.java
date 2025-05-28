@@ -104,7 +104,7 @@ public class Producto {
                 ", stock=" + stock +
                 ", imagen='" + imagen + '\'' +
                 ", disponible=" + disponible +
-                ", categoria=" + categoria +
+                ", categorias=" + categoria +
                 '}';
     }
 }

@@ -8,13 +8,17 @@ import lombok.*;
 @Setter
 @ToString
 @Entity
-@Table(name = "Mesas")
+@Table(name = "categorias")
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Mesa {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
+    private String nombre;
+    private String descripcion;
+    private Boolean activo;
 }

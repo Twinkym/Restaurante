@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 //Controlador de productos
 @Controller
-@RequestMapping("/producto")
+@RequestMapping("/productos")
 public class ProductoController {
 
-    //
+    // Repositorios de la aplicación.
     private final ProductoRepository productoRepository;
     private final CategoriaRepository categoriaRepository;
 
@@ -22,17 +22,18 @@ public class ProductoController {
         this.categoriaRepository = categoriaRepository;
     }
 
+    // Métodos para gestionar las peticiones HTTP de la aplicación.
     @GetMapping
     public String mostrarListaProductos(Model model) {
         model.addAttribute("productos", productoRepository.findAll());
-        return "producto-list.html";
+        return "productos-list.html";
     }
 
     @GetMapping("/nuevo")
     public String crearProducto(Model model) {
-        model.addAttribute("producto", new Producto());
+        model.addAttribute("productos", new Producto());
         model.addAttribute("categorias", categoriaRepository.findAll());
-        return "producto-formulario.html";
+        return "productos-formulario.html";
     }
 
     @PostMapping("/guardar")
@@ -43,16 +44,16 @@ public class ProductoController {
 
     @GetMapping("/editar/{id}")
     public String editarProducto(@PathVariable Long id, Model model) {
-        Producto producto = productoRepository.finById(Id).orElseThrow(() -> new IllegalArgumentException("ID invalido: " + id));
-        model.addAttribute("producto", producto);
+        Producto producto = productoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID invalido: " + id));
+        model.addAttribute("productos", producto);
         model.addAttribute("categorias", categoriaRepository.findAll());
-        return "producto-formulario.html";
+        return "productos-formulario.html";
     }
 
     @GetMapping("/detalle/{id}")
-    public String mostrarDetalleProducto(@pathVariable Long id, Model model) {
-        Producto producto = productoRepository.findById(id).orElseThrow(null);
-        model.addAttribute("producto", producto);
-        return "producto-detalle.html";
+    public String mostrarDetalleProducto(@PathVariable Long id, Model model) {
+        Producto producto = productoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("ID invalido: " + id));
+        model.addAttribute("productos", producto);
+        return "productos-detalle.html";
     }
 }
