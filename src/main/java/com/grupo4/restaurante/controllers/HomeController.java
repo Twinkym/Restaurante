@@ -1,6 +1,7 @@
 package com.grupo4.restaurante.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -15,7 +16,9 @@ public class HomeController {
      * */
     // Mapea la URL raíz ("/") a la vista home.html
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("titulo", "Inicio | Restaurante");
+        model.addAttribute("mensaje", "Bienvenido a Restaurante");
         return "home";  // Se refiere al archivo templates/home.html
     }
 

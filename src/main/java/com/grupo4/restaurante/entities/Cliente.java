@@ -23,3 +23,4 @@ public class Cliente {
     private String telefono;
     private Boolean activo;
 }
+
