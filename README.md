@@ -57,5 +57,6 @@ Cada grupo presenta el proyecto en 15 minutos.
   * Aprender a crear modelos de datos esquemas de base de datos
   * Ideas futuras: capa seguridad, distintos roles de usuario, agregar X funcionalidades, dashboard de compras realizadas
  
-  ![captura pagina Home proyecto gestor restaurante](https://github.com/user-attachments/assets/e3af9dc9-aa34-4d6c-829e-be1e9e472edf)
+  ![captura pagina Home](https://github.com/user-attachments/assets/6f3ed732-4919-4740-8804-1b479b0bd4c5)
+
 
