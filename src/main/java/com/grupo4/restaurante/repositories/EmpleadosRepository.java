@@ -13,7 +13,7 @@ import java.util.List;
  *      para operaciones relacionadas con la entidad {@link com.grupo4.restaurante.entities.Empleado}.
  *      Para acceder a este repositorio se debe inyectar en un bean de Spring.
  * @author David De La Puente
- * @author Lara
+ * @author Angel
  * @author Luis Miguel
  * @version 1.0
  * @since 2025-05-28

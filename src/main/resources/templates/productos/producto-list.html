@@ -13,10 +13,10 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="mb-4">Lista de Productos</h1>
+    <h1 class="mb-4">Listado de Productos</h1>
 
     <!-- Botón para crear nuevos productos -->
-    <a class="btn btn-success mb-3" th:href="@{/producto/formulario}">Nuevo Producto</a>
+    <a class="btn btn-success mb-3" th:href="@{/producto/nuevo}">Crear nuevo Producto</a>
 
     <!-- Tabla de productos -->
     <table class="table table-striped table-bordered">
@@ -32,22 +32,24 @@
     </table>
     <!-- Itera sobre la lista de productos -->
     <table class="table table-striped table-bordered">
-        <tbody>
-        <tr th:each="producto : ${productos}">
-            <td th:text="${producto.id}">1</td>
-            <td th:text="${producto.nombre}">Producto</td>
-            <td th:text="${producto.precio}">10.00</td>
-            <td th:text="${producto.stock}">5</td>
-            <td th:text="${producto.categoria.nombre}">Bebidas</td>
+        <tbody th:each="producto : ${productos}">
+        <tr>
+            <td th:text="${producto.id}"></td>
+            <td th:text="${producto.nombre}"></td>
+            <td th:text="${#numbers.formatDecimal(producto.precio, 1, 2)} + ' €'"></td>
+            <td th:text="${producto.stock} + (${producto.stock == 1} ? ' Ud.' : ' Uds.')"></td>
+            <td th:text="${producto.disponible ? 'sí' : 'No'}"></td>
+            <td th:text="${producto.categoria != null = producto.categoria.nombre : 'Sin categoría'}"></td>
             <td>
-                <a class="btn btn-info btn-sm" th:href="@{'/productos/detalle/' + ${producto.id}}">Ver</a>
-                <a class="btn btn-warning btn-sm" th:href="@{'/productos/editar/' + ${producto.id}}">Editar</a>
-                <a class="btn btn-danger btn-sm" onclick="return confirm('¡Estes seguro de que deseas eliminar este producto?');" th:href="@{'/productos/eliminar/' + ${producto.id}}">Eliminar</a>
+                <a class="btn btn-info btn-sm" th:href="@{/productos/{id}(id=${producto.id})}">Ver</a>
+                <a class="btn btn-warning btn-sm" th:href="@{'/productos/{id}/editar(id=${producto.id})}">Editar</a>
+                <a class="btn btn-danger btn-sm" onclick="return confirm('¡Estes seguro de que deseas eliminar este producto?');" th:href="@{'/productos/{id}/eliminar(id${producto.id})}">Eliminar</a>
             </td>
         </tr>
         </tbody>
     </table>
 
 </div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
