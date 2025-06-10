@@ -1,7 +1,7 @@
 -- ===========================
 -- INSERCIÓN DE CATEGORÍAS
 -- ===========================
-INSERT INTO categorias (id, nombre, descripcion, activo) VALUES
+INSERT INTO categorias (id,nombre, descripcion, activo) VALUES
 (1, 'Bebidas', 'Bebidas frías y calientes', true),
 (2, 'Entrantes', 'Aperitivos y entrantes para empezar', true),
 (3, 'Platos Principales', 'La especialidad de la casa', true),
