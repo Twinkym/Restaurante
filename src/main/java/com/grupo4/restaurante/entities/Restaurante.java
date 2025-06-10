@@ -34,6 +34,9 @@ public class Restaurante {
     @Column(nullable = false) // Permite configurar la columna de la BBDD.  // nullable = false, hace que el campo sea obligatorio.
     private String nombre;
 
+    @Column
+    private String direccion;
+
     /*
      *  Número de teléfono de contacto y reservas.
      */
@@ -44,7 +47,7 @@ public class Restaurante {
      *  Número de Identificación Fiscal (NIF/CIF) del restaurante.
      * Debería ser único, por eso añadimos la restricción `unique = true`.
      */
-    @Column(unique = true) // Asegura que no haya dos filas con el mismo valor en esta columna. Así al generarse los id se verán numeros diferentes y "Correlativos sin olvidar que cuando se borra un valor este permanece en una especie de cache".
+    @Column(unique = true) // Asegura que no haya dos filas con el mismo valor en esta columna. Así al generarse los Id se verán numeros diferentes y "Correlativos sin olvidar que cuando se borra un valor este permanece en una especie de caché".
     private String nif;
 
     /*
@@ -56,7 +59,7 @@ public class Restaurante {
     /*
      *  Página web del restaurante (opcional).
      */
-    @Column(name = "sitioWeb")  // Especificamos el nombre de la columna en la BD.
+    @Column(name = "sitio_Web")  // Especificamos el nombre de la columna en la BD.
     private String sitioWeb;
 
     /*

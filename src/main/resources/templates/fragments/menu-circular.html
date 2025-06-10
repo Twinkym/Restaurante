@@ -1,7 +1,29 @@
 <!-- templates/fragments/menu-circular.html -->
 <div th:fragment="menu-circular" xmlns:th="http://www.thymeleaf.org">
     <!-- Contenido del Menu Circular -->
-    <div class="container text-center my-4">
+    <div class="container text-center my-5">
+        <!-- Plato de fondo -->
+        <div class="plato">
+            <!-- Botones alrededor -->
+            <a class="menu-item" style="--i: 0;" th:href="@{/menu/primeros">
+                <img alt="Primeros" th:src="@{/img/platos/primeros.jpg}">
+            </a>
+            <a class="menu-item" style="--i: 0;" th:href="@{/menu/segundos">
+                <img alt="Segundos" th:src="@{/img/platos/segundos.jpg}">
+            </a>
+            <a class="menu-item" style="--i: 0;" th:href="@{/menu/postres">
+                <img alt="Postres" th:src="@{/img/platos/postres.jpg}">
+            </a>
+            <a class="menu-item" style="--i: 0;" th:href="@{/menu/bebidas">
+                <img alt="bebidas" th:src="@{/img/platos/bebidas.jpg}">
+            </a>
+
+            <!-- Centro del plato -->
+            <div class="centro">
+                <strong>Menú</strong>
+            </div>
+        </div>
+
         <p>Aquí irá el menú circular cuando lo diseñamos</p>
     </div>
 </div>
