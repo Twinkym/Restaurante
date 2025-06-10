@@ -17,7 +17,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RestauranteApplication {
 
 	/**
-	 * Método principal (main):
+	 * Mé-t-odo principal (main):
 	 * este es el punto de entrada de la aplicación.
 	 * SpringApplication.run(...) inicia toda la aplicación Spring.
 	 * Al ejecutarse, configura el contexto de Spring y lanza el servidor embebido (como Tomcat).

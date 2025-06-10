@@ -1,12 +1,16 @@
 package com.grupo4.restaurante.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@Builder
 @Setter
 @Getter
+@ToString
 @Entity
+@Table(name = "productos")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +27,6 @@ public class Producto {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    // Getters, Setters y constructor vacío.
-    public Producto() {}
-
     public Producto(String nombre, String descripcion, Double precio, int stock, Categoria categoria, String imagen, boolean disponible) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -34,17 +35,18 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", precio=" + precio +
-                ", stock=" + stock +
-                ", imagen='" + imagen + '\'' +
-                ", disponible=" + disponible +
-                ", categorias=" + categoria +
-                '}';
-    }
+    /*@Override
+     *public String toString() {
+     *    return "Producto{" +
+     *            "id=" + id +
+     *            ", nombre='" + nombre + '\'' +
+     *            ", descripcion='" + descripcion + '\'' +
+     *            ", precio=" + precio +
+     *            ", stock=" + stock +
+     *            ", imagen='" + imagen + '\'' +
+     *            ", disponible=" + disponible +
+     *            ", categorias=" + categoria +
+     *            '}';
+     * }
+     */
 }
