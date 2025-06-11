@@ -61,6 +61,8 @@ Cada grupo presenta el proyecto en 15 minutos.
 
   Aplicación de gestión integral para restaurantes desarrollada con Spring Boot.
 
+  Acontinuación deben colocarse las capturas que muestren las diferentes pantallas y su contenido.
+
 ---
 ## Descripción General
 
