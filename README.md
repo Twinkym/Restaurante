@@ -64,6 +64,7 @@ Cada grupo presenta el proyecto en 15 minutos.
   Muestra de la Home con carrusel funcional.
   ![Captura-Carrousel-y-fragments-100%](https://github.com/user-attachments/assets/9760c95d-0422-4693-8dbc-fd37c2f74258)
 
+- La imagen me ha quedado algo rara al cambiar de monitor, si da tiempo la arreglaré.
   Acontinuación deben colocarse las capturas que muestren las diferentes pantallas y su contenido
 
 
