@@ -1,8 +1,7 @@
 package com.grupo4.restaurante.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * Entidad Producto.
@@ -13,9 +12,14 @@ import lombok.Setter;
  * @since 2025-05-28
  *
  */
+@Builder
 @Setter
 @Getter
+@ToString
 @Entity
+@Table(name = "productos")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

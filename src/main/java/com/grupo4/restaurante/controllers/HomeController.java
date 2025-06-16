@@ -33,18 +33,12 @@ public class HomeController {
     }
 
     @GetMapping("/error")
-    public String error() {
-        return "error";     // Se refiere a la vista error para mostrar la pagina 404(sin extensión .html)
+    public String error() { return "error";     // Se refiere a la vista error para mostrar la pagina 404(sin extensión .html)
     }
 
     @GetMapping("/contacto")
     public String contacto() {
         return "contacto";      // Se refiere a la vista contacto (sin extensión .html)
-    }
-
-    @GetMapping("/productos")
-    public String productos() {
-        return "productos";     // Se refiere a la vista productos (sin extensión .html)
     }
 
     @GetMapping("/categorias")

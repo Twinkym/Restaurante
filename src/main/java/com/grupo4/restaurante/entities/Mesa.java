@@ -26,4 +26,8 @@ public class Mesa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nombre")  // Es una buena práctica especificar el nombre de la columna.
+    private String nombre;
 }
+

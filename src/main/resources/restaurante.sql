@@ -1,0 +1,2 @@
+Insert into restaurante(id, nombre, direccion, telefono, nif, email, sitioWeb, horario) values
+(1, 'Spanish Restaurant', 'Calle Falsa 432, 08032 Barcelona', '930123456', 'B12345678', 'contacto@SpanishRestaurant.es', 'www.SpanishRestaurant.es', 'L-D: 12:00-23:00');
