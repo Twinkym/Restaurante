@@ -65,6 +65,8 @@ Cada grupo presenta el proyecto en 15 minutos.
 ![Captura paginia Home con carrusel de imagenes](https://github.com/user-attachments/assets/d192af5d-5f1e-41e0-9064-c696e2293543)
 
 
+![Captura-Carrousel-y-fragments-100%](https://github.com/user-attachments/assets/9760c95d-0422-4693-8dbc-fd37c2f74258)
+
 
 ---
 ## Descripción General
