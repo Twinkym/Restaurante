@@ -62,8 +62,8 @@ Cada grupo presenta el proyecto en 15 minutos.
   Aplicación de gestión integral para restaurantes desarrollada con Spring Boot.
 
   Acontinuación deben colocarse las capturas que muestren las diferentes pantallas y su contenido.
+![Captura paginia Home con carrusel de imagenes](https://github.com/user-attachments/assets/d192af5d-5f1e-41e0-9064-c696e2293543)
 
-![Inicio _ Restaurante.webm](https://github.com/user-attachments/assets/d192af5d-5f1e-41e0-9064-c696e2293543)
 
 
 ---
