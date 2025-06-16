@@ -27,7 +27,7 @@ public class Menu {
     @Column(name = "nombre")
     private String nombre;
 
-    // --- Un menú probablemente también tendrá una lista de productos ---
+    /* --- Un menú probablemente también tendrá una lista de productos ---*/
     @ManyToMany
     @JoinTable(
             name = "menu_producto",
