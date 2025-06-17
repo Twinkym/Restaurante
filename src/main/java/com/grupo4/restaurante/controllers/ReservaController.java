@@ -3,7 +3,7 @@ package com.grupo4.restaurante.controllers;
 import com.grupo4.restaurante.dto.ReservaForm;
 import com.grupo4.restaurante.dto.TurnoInfoDTO;
 import com.grupo4.restaurante.entities.Reserva;
-import com.grupo4.restaurante.services.MesaAsignadorService;
+import com.grupo4.restaurante.services.MesaService;
 import com.grupo4.restaurante.services.ReservaService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -20,11 +20,11 @@ import java.util.stream.IntStream;
 public class ReservaController {
 
     private final ReservaService reservaService;
-    private final MesaAsignadorService mesaAsignadorService;
+    private final MesaService mesaService;
 
-    public ReservaController(ReservaService reservaService, MesaAsignadorService mesaAsignadorService) {
+    public ReservaController(ReservaService reservaService, MesaService mesaService) {
         this.reservaService = reservaService;
-        this.mesaAsignadorService = mesaAsignadorService;
+        this.mesaService = mesaService;
     }
 
     @GetMapping("/nueva")
@@ -58,6 +58,6 @@ public class ReservaController {
             @RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha,
             @RequestParam("comensales") int comensales
     ) {
-        return mesaAsignadorService.obtenerTurnosInfo(fecha, comensales);
+        return mesaService.obtenerTurnosInfo(fecha, comensales);
     }
 }
