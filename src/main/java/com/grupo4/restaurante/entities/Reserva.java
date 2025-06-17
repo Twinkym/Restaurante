@@ -21,8 +21,8 @@ public class Reserva {
     private Long id;
 
     private int numComensales;
-    // TODO Si utilizamos un login habria que uitilizar el usuario
     private String nombreCliente;
+    // TODO add field in form
     private String telefono;
     private String email;
     private LocalDate fecha;
