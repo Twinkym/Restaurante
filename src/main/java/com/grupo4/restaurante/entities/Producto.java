@@ -6,7 +6,6 @@ import lombok.*;
 @Builder
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "productos")
 @NoArgsConstructor
@@ -33,6 +32,8 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.categoria = categoria;
+        this.imagen = imagen;
+        this.disponible = disponible;
     }
 
     /*@Override

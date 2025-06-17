@@ -33,5 +33,6 @@ public class Menu {
             name = "menu_producto",
             joinColumns = @JoinColumn(name = "menu_id"),
             inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    @ToString.Exclude
     private List<Producto> productos;
 }

@@ -3,16 +3,13 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="logo">
-                <img alt="Logo" style="height: 100px;" th:src="@{/img/logos/logotipo_restaurante.png}">
+                <img alt="Logo" style="height: 200px; border-radius: 50%; " th:src="@{/img/logos/logotipo_restaurante.png}">
             </div>
             <div class="titulo text-center">
                 <h1 class="mb-0">Gestor de Restaurante</h1>
             </div>
-            <div class="botones">
-                <a class="btn btn-outline-primary me-2" th:href="@{/productos/producto-list}">Productos</a>
-                <a class="btn btn-outline-secondary me-2" th:href="@{/categorias/categoria-list}">Categorias</a>
-                <a class="btn btn-outline-success me-2" th:href="@{/clientes/cliente-list}">Clientes</a>
-            </div>
+            <!-- Menú Circular -->
+            <div th:replace="~{fragments/menu-circular :: menu-circular}"></div>
         </div>
     </nav>
 </header>
