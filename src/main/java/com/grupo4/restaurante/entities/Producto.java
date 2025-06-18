@@ -38,6 +38,10 @@ public class Producto {
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
+<<<<<<< feature/optimizacion-de-imagenes
+        this.categoria = categoria;
+=======
+>>>>>>> main
         this.imagen = imagen;
         this.disponible = disponible;
     }
@@ -51,7 +55,11 @@ public class Producto {
                 ", precio=" + precio +
                 ", stock=" + stock +
                 ", imagen='" + imagen + '\'' +
+<<<<<<< feature/optimizacion-de-imagenes
+                ", disponible=" + disponible;
+=======
                 ", disponible=" + disponible +
                 '}';
+>>>>>>> main
     }
 }
