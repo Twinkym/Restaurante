@@ -66,7 +66,8 @@ Cada grupo presenta el proyecto en 15 minutos.
 
 - La imagen me ha quedado algo rara al cambiar de monitor, si da tiempo la arreglaré.
   
-![implementado_menu-circular_a_falta_de_pequeños_detalles_de_colocación_en_el_menu](https://github.com/user-attachments/assets/08cce5e6-1d49-4e11-9707-596ddb7bef74)
+![Home, tamaño menu y logo arreglados, carrusel width normalizado con heigth.](https://github.com/user-attachments/assets/60c91013-cd14-47e0-a77b-fdb353a5eac0)
+
 
 - Imagen de la pagina home con la  implementación de logotipo, titulo, menu-circular, carrusel y footer, los elementos los elementos titulo, footer, menu-circular se cargan dinamicamente mediante fragments,
 - las imagenes desde la carpeta img dentro de static resources, siguiente captura correción de posiciones, tamaños de imagenes y opcional funcionalidad de los botones.
