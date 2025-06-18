@@ -3,10 +3,18 @@ package com.grupo4.restaurante.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Entidad Producto.
+ * @author David De La Puente
+ * @author Alejandro
+ * @author Luis Miguel
+ * @version 1.0
+ * @since 2025-05-28
+ *
+ */
 @Builder
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "productos")
 @NoArgsConstructor
@@ -33,20 +41,19 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.categoria = categoria;
+        this.imagen = imagen;
+        this.disponible = disponible;
     }
 
-    /*@Override
-     *public String toString() {
-     *    return "Producto{" +
-     *            "id=" + id +
-     *            ", nombre='" + nombre + '\'' +
-     *            ", descripcion='" + descripcion + '\'' +
-     *            ", precio=" + precio +
-     *            ", stock=" + stock +
-     *            ", imagen='" + imagen + '\'' +
-     *            ", disponible=" + disponible +
-     *            ", categorias=" + categoria +
-     *            '}';
-     * }
-     */
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", stock=" + stock +
+                ", imagen='" + imagen + '\'' +
+                ", disponible=" + disponible;
+    }
 }
