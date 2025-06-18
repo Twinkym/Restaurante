@@ -22,3 +22,24 @@ INSERT INTO productos (id, nombre, descripcion, precio, stock, disponible, categ
 -- ===========================
 INSERT INTO restaurante (id, nombre, direccion, telefono, nif, email, sitio_web, horario) VALUES
 (1, 'El Buen Sabor', 'Plaza de la Comida 1, 08001 Barcelona', '930123456', 'B12345678', 'contacto@elbuensabor.es', 'http://www.elbuensabor.es', 'L-D de 12:00 a 23:00');
+-- ===========================
+-- INSERCIÓN DE DATOS DE MESAS
+-- ===========================
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (1, 2, true);
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (2, 4, true);
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (3, 4, false);
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (4, 6, true);
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (5, 2, true);
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (6, 6, true);
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (7, 8, false);
+INSERT INTO mesa (numero, capacidad, disponible) VALUES (8, 4, true);
+-- ===========================
+-- INSERCIÓN DE DATOS DE RESERVAS
+-- ===========================
+INSERT INTO reserva (num_comensales, nombre_cliente, telefono, email, fecha, hora, mesa_id) VALUES
+(1, 'Cliente 1', '600111222', 'cliente1@mail.com', '2025-07-02', '13:00:00', 1),
+(3, 'Cliente 2', '600222333', 'cliente2@mail.com', '2025-07-02', '13:30:00', 2),
+(4, 'Cliente 3', '600333444', 'cliente3@mail.com', '2025-07-02', '14:00:00', 3),
+(5, 'Cliente 4', '600444555', 'cliente4@mail.com', '2025-07-02', '14:30:00', 4),
+(2, 'Cliente 5', '600555666', 'cliente5@mail.com', '2025-07-02', '15:00:00', 5),
+(6, 'Cliente 6', '600666777', 'cliente6@mail.com', '2025-07-02', '15:30:00', 6);

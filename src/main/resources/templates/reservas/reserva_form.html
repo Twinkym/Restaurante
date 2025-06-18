@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reserva de Mesa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+    <script>
+        // TODO hacer la funcion que no se pueda spamear
+        async function cargarTurnosInfo() {
+            const fecha = document.querySelector('[name="fecha"]').value;
+            const comensales = document.querySelector('[name="comensales"]').value;
+
+            if (!fecha || !comensales) return;
+
+            const response = await fetch(`/reservas/turnos-info?fecha=${fecha}&comensales=${comensales}`);
+            const turnos = await response.json();
+
+            const contenedor = document.getElementById('turnos-container');
+            contenedor.innerHTML = '';
+
+            const titulo = document.createElement('h3');
+            titulo.innerText = 'COMIDA';
+            titulo.className = 'fw-bold mb-3'; // Bootstrap: negrita y separación inferior
+            titulo.style.fontSize = '1.2rem'; // Tamaño no muy grande
+            contenedor.appendChild(titulo)
+
+            turnos.forEach((t, index) => {
+                const div = document.createElement('div');
+                div.className = 'form-check form-check-inline';
+
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.className = 'btn-check';
+                input.name = 'turno';
+                input.id = `turno-${index}`;
+                input.value = t.hora;
+                input.disabled = !t.disponible;
+                input.onclick = () => {
+                    document.getElementById('horaSeleccionada').value = t.hora;
+                };
+
+                const label = document.createElement('label');
+                label.className = 'btn btn-sm m-1 ' + (t.disponible ? 'btn-outline-success' : 'btn-outline-secondary disabled');
+                label.htmlFor = input.id;
+                label.innerText = t.hora;
+
+                div.appendChild(input);
+                div.appendChild(label);
+                contenedor.appendChild(div);
+            });
+        }
+    </script>
+</head>
+<body class="container mt-4">
+<h2>Hacer una Reserva</h2>
+
+<form th:action="@{/reservas/guardar}" th:object="${reservaForm}" method="post">
+    <div class="mb-3">
+        <label for="fecha" class="form-label">
+            <i class="bi bi-calendar-event"></i> Fecha:
+        </label>
+        <input type="date" th:field="*{fecha}" class="form-control" required onchange="cargarTurnosInfo()"/>
+    </div>
+
+    <div class="mb-3">
+        <label for="comensales" class="form-label">
+            <i class="bi bi-people-fill"></i> Número de personas:
+        </label>
+        <select th:field="*{comensales}" class="form-select" onchange="cargarTurnosInfo()">
+            <option th:each="num : ${capacidades}" th:value="${num}" th:text="${num}"></option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">
+            <i class="bi bi-clock-history"></i> Seleccione un turno:
+        </label>
+        <div id="turnos-container" class="d-flex flex-wrap"></div>
+        <input type="hidden" th:field="*{hora}" id="horaSeleccionada"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-check-circle-fill"></i> Reservar
+    </button>
+</form>
+
+<div class="mt-3" th:if="${mensaje}">
+    <div class="alert alert-info" th:text="${mensaje}"></div>
+</div>
+</body>
+</html>
