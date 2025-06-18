@@ -31,16 +31,17 @@ public class Producto {
     private String imagen;
     private boolean disponible;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    // Getters, Setters y constructor vacío.
 
-    public Producto(String nombre, String descripcion, Double precio, int stock, Categoria categoria, String imagen, boolean disponible) {
+    public Producto(String nombre, String descripcion, Double precio, int stock, String imagen, boolean disponible) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
+<<<<<<< feature/optimizacion-de-imagenes
         this.categoria = categoria;
+=======
+>>>>>>> main
         this.imagen = imagen;
         this.disponible = disponible;
     }
@@ -54,6 +55,11 @@ public class Producto {
                 ", precio=" + precio +
                 ", stock=" + stock +
                 ", imagen='" + imagen + '\'' +
+<<<<<<< feature/optimizacion-de-imagenes
                 ", disponible=" + disponible;
+=======
+                ", disponible=" + disponible +
+                '}';
+>>>>>>> main
     }
 }

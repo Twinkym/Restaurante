@@ -61,6 +61,18 @@ Cada grupo presenta el proyecto en 15 minutos.
 
   Aplicación de gestión integral para restaurantes desarrollada con Spring Boot.
 
+  Muestra de la Home con carrusel funcional.
+  ![Captura-Carrousel-y-fragments-100%](https://github.com/user-attachments/assets/9760c95d-0422-4693-8dbc-fd37c2f74258)
+
+- La imagen me ha quedado algo rara al cambiar de monitor, si da tiempo la arreglaré.
+  
+![implementado_menu-circular_a_falta_de_pequeños_detalles_de_colocación_en_el_menu](https://github.com/user-attachments/assets/08cce5e6-1d49-4e11-9707-596ddb7bef74)
+
+- Imagen de la pagina home con la  implementación de logotipo, titulo, menu-circular, carrusel y footer, los elementos los elementos titulo, footer, menu-circular se cargan dinamicamente mediante fragments,
+- las imagenes desde la carpeta img dentro de static resources, siguiente captura correción de posiciones, tamaños de imagenes y opcional funcionalidad de los botones.
+
+
+Acontinuación deben colocarse las capturas que muestren las diferentes pantallas y su contenido
 ---
 ## Descripción General
 
