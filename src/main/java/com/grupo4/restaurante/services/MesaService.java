@@ -15,12 +15,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MesaAsignadorService {
+public class MesaService {
 
     private final MesaRepository mesaRepository;
     private final ReservaRepository reservaRepository;
 
-    public MesaAsignadorService(MesaRepository mesaRepository, ReservaRepository reservaRepository) {
+    public MesaService(MesaRepository mesaRepository, ReservaRepository reservaRepository) {
         this.mesaRepository = mesaRepository;
         this.reservaRepository = reservaRepository;
     }

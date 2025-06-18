@@ -16,7 +16,7 @@ public class Mesa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // todo / string NOMBRE / STRING IDENTIFICADOR /
+    // TODO podria ser  string NOMBRE / STRING IDENTIFICADOR
     private Integer numero;
     private Integer capacidad;
 

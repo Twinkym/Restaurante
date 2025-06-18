@@ -12,15 +12,15 @@ import java.util.Optional;
 public class ReservaService {
 
     private final ReservaRepository reservaRepository;
-    private final MesaAsignadorService mesaAsignadorService;
+    private final MesaService mesaService;
 
-    public ReservaService(MesaAsignadorService mesaAsignadorService, ReservaRepository reservaRepository) {
+    public ReservaService(MesaService mesaService, ReservaRepository reservaRepository) {
         this.reservaRepository = reservaRepository;
-        this.mesaAsignadorService = mesaAsignadorService;
+        this.mesaService = mesaService;
     }
 
     public Optional<Reserva> crearReserva(ReservaForm form) {
-        Optional<Mesa> mesaOpt = mesaAsignadorService.encontrarMesaDisponible(form.getFecha(), form.getComensales(), form.getHora());
+        Optional<Mesa> mesaOpt = mesaService.encontrarMesaDisponible(form.getFecha(), form.getComensales(), form.getHora());
 
         if (mesaOpt.isEmpty()) return Optional.empty();
 
