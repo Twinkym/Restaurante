@@ -15,7 +15,6 @@ import lombok.*;
 @Builder
 @Setter
 @Getter
-@ToString
 @Entity
 @Table(name = "productos")
 @NoArgsConstructor
@@ -32,19 +31,15 @@ public class Producto {
     private String imagen;
     private boolean disponible;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-
     // Getters, Setters y constructor vacío.
-    public Producto() {}
 
-    public Producto(String nombre, String descripcion, Double precio, int stock, Categoria categoria, String imagen, boolean disponible) {
+    public Producto(String nombre, String descripcion, Double precio, int stock, String imagen, boolean disponible) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
-        this.categoria = categoria;
+        this.imagen = imagen;
+        this.disponible = disponible;
     }
 
     @Override
@@ -57,7 +52,6 @@ public class Producto {
                 ", stock=" + stock +
                 ", imagen='" + imagen + '\'' +
                 ", disponible=" + disponible +
-                ", categorias=" + categoria +
                 '}';
     }
 }
