@@ -1,18 +1,42 @@
 <!-- templates/fragments/header.html -->
-<header th:fragment="header" xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="header(tituloPagina)" xmlns:th="http://www.thymeleaf.org"> <!-- xmlns:sec="http://www.thymeleaf.org/extras/spring-security"-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="logo">
                 <img alt="Logo" style="height: 100px;" th:src="@{/img/logos/logotipo_restaurante.png}">
             </div>
             <div class="titulo text-center">
-                <h1 class="mb-0">Gestor de Restaurante</h1>
+                <h1 class="mb-0" th:text="${tituloPagina}">Gestor de Restaurante</h1>
             </div>
             <div class="botones">
-                <a class="btn btn-outline-primary me-2" th:href="@{/productos/producto-list}">Productos</a>
-                <a class="btn btn-outline-secondary me-2" th:href="@{/categorias/categoria-list}">Categorias</a>
-                <a class="btn btn-outline-success me-2" th:href="@{/clientes/cliente-list}">Clientes</a>
+                <!--  Solo mostrar si el usuario tiene rol ADMIN o ENCARGADO
+                <div sec:authorize="hasRole('ADMIN') or hasRole('ENCARGADO')">
+                    <a class="btn btn-outline-primary me-2" th:href="@{/productos/producto_list}">Productos</a>
+                </div>
+                -->
+                <!-- Solo mostrar si el usuario tiene rol ADMIN o ENCARGADO
+                 <div sec:authorize="hasRole('ADMIN') or hasRole('ENCARGADO')">
+                    <a class="btn me-2" th:classappend="${#httpServletRequest.requestURI.contains('/categorias')} ? 'btn-secondary' : 'btn-outline-secondary' " th:href="@{/categorias/categoria_list}">Categorias</a>
+                </div>
+                -->
+                <!--  Solo mostrar si el usuario tiene rol ADMIN o ENCARGADO
+                <div sec:authorize="hasRole('ADMIN') or hasRole('ENCARGADO')">
+                <a class="btn me-2" th:classappend="${#httpServletRequest.requestURI.contains('/clientes')} ? 'btn-success' : 'btn-outline-success' " th:href="@{/clientes/cliente_list}">Clientes</a>
+                </div>
+                -->
+                <a class="btn me-2" th:classappend="${#httpServletRequest.requestURI.contains('/reservas')} ? 'btn-warning' : 'btn-outline-warning' " th:href="@{/reservas/reservas_list}">Reservas</a>
+                <div class="dropdown d-inLine-block"><button aria-expanded="false" class="btn dropdown-toggle me-2" data-bs-toggle="dropdown" id="dropdownMenuButton" th:classappend="${#httpServeletRequest.requestURI.contains('/menus')} ? 'btn-info' : 'btn-outline-info'">
+                    Menús
+                </button>
+                    <ul aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/menus/carne}">Carne</a></li>
+                        <li><a class="dropdown-item" th:href="@{/menus/pescado}">Pescado</a></li>
+                        <li><a class="dropdown-item" th:href="@{/menus/vegetariano}">Vegetariano</a> </li>
+                    </ul>
+                </div>
+               <!-- <a class="btn btn-outline-secondary me-2" th:href="@{/empleados/empleado}">Empleados</a> -->
             </div>
         </div>
     </nav>
+    <div th:replace="~{fragments/menu_circular :: menu_circular}"></div>
 </header>

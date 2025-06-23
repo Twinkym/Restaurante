@@ -3,6 +3,14 @@ package com.grupo4.restaurante.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Entidad Empleado.
+ * @author David De La Puente
+ * @author Luis Miguel
+ * @version 1.0
+ * @since 2025-05-28
+ *
+ */
 @Builder
 @Getter
 @Setter

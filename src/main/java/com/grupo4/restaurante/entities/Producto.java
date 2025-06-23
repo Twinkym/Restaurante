@@ -6,7 +6,6 @@ import lombok.*;
 /**
  * Entidad Producto.
  * @author David De La Puente
- * @author Alejandro
  * @author Luis Miguel
  * @version 1.0
  * @since 2025-05-28
@@ -31,19 +30,23 @@ public class Producto {
     private String imagen;
     private boolean disponible;
 
+    /**
+     * Relación muchos-a-uno con la entidad Categoría.
+     * Cada producto pertenece a una única categoría.
+     */
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoria;
     // Getters, Setters y constructor vacío.
 
-    public Producto(String nombre, String descripcion, Double precio, int stock, String imagen, boolean disponible) {
+    public Producto(String nombre, String descripcion, Double precio, int stock, String imagen, boolean disponible, Categoria categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
-<<<<<<< feature/optimizacion-de-imagenes
-        this.categoria = categoria;
-=======
->>>>>>> main
         this.imagen = imagen;
         this.disponible = disponible;
+        this.categoria = categoria;
     }
 
     @Override
@@ -55,11 +58,8 @@ public class Producto {
                 ", precio=" + precio +
                 ", stock=" + stock +
                 ", imagen='" + imagen + '\'' +
-<<<<<<< feature/optimizacion-de-imagenes
-                ", disponible=" + disponible;
-=======
                 ", disponible=" + disponible +
+                ", categoria=" + categoria +
                 '}';
->>>>>>> main
     }
 }

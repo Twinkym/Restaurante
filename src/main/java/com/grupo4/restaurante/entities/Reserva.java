@@ -6,6 +6,14 @@ import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Entidad Empleado.
+ * @author David De La Puente
+ * @author Luis Miguel
+ * @version 1.0
+ * @since 2025-05-28
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor

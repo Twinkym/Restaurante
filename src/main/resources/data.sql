@@ -17,9 +17,9 @@ INSERT INTO productos (id, nombre, descripcion, precio, stock, disponible, categ
 (4, 'Croquetas de Jamón Ibérico', 'Ración de 6 unidades de croquetas caseras', 7.00, 25, true, 2),
 (5, 'Entrecot a la Parrilla', '300g de entrecot de ternera con patatas y pimientos', 18.00, 15, true, 3),
 (6, 'Tarta de Queso Casera', 'Porción de tarta de queso con coulis de frutos rojos', 5.50, 10, true, 4);
--- ===========================
+-- ==================================
 -- INSERCIÓN DE DATOS DEL RESTAURANTE
--- ===========================
+-- ==================================
 INSERT INTO restaurante (id, nombre, direccion, telefono, nif, email, sitio_web, horario) VALUES
 (1, 'El Buen Sabor', 'Plaza de la Comida 1, 08001 Barcelona', '930123456', 'B12345678', 'contacto@elbuensabor.es', 'http://www.elbuensabor.es', 'L-D de 12:00 a 23:00');
 -- ===========================
@@ -33,9 +33,9 @@ INSERT INTO mesa (numero, capacidad, disponible) VALUES (5, 2, true);
 INSERT INTO mesa (numero, capacidad, disponible) VALUES (6, 6, true);
 INSERT INTO mesa (numero, capacidad, disponible) VALUES (7, 8, false);
 INSERT INTO mesa (numero, capacidad, disponible) VALUES (8, 4, true);
--- ===========================
+-- ===============================
 -- INSERCIÓN DE DATOS DE RESERVAS
--- ===========================
+-- ===============================
 INSERT INTO reserva (num_comensales, nombre_cliente, telefono, email, fecha, hora, mesa_id) VALUES
 (1, 'Cliente 1', '600111222', 'cliente1@mail.com', '2025-07-02', '13:00:00', 1),
 (3, 'Cliente 2', '600222333', 'cliente2@mail.com', '2025-07-02', '13:30:00', 2),

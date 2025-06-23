@@ -1,5 +1,27 @@
-# Proyecto Restaurante v1.0
-Crear proyecto de gestión de restaurantes, con entidades.
+# 🍽️ Proyecto Restaurante v1.0
+Aplicación de gestión integral para restaurantes desarrollada en Java con Spring Boot. Permite
+administrar productos, categorias, mesas, pedidos y clientes de forma sencilla e intuitiva.
+------------------------------------------------------------------------------------------------
+## 📌 Descripción General
+RestauranteApp es un sistema web diseñado para facilitar la administración de un restaurante.
+Permite gestionar diferentes objetos integrando buenas prácticas de desarrollo para garantizar 
+escalabilidad y mantenibilidad.
+------------------------------------------------------------------------------------------------
+## 🛠️ Tecnologías y Frameworks Utilizados
+
+      Componente                Herramientas/Framework                
+  Lenguaje:                     Java 24
+  Framework Backend:            Spring Boot 3.5.0
+  ORM:                          Spring Data JPA + Hibernate 6
+  Monitor de Plantillas:        Thymeleaf
+  Estilos y Diseño:             Bootstrap CSS
+  Utilidades:                   Lombok, Fragments
+  Base de Datos:                MySQL 8.0+/H2(dev)
+  Gestión de Dependencias:      Apache Maven
+  IDE Recomendado:              IntelliJ IDEA
+  Control de Versiones:         Git+GitHub
+  Gestión de Tareas:            Trello / Jira / Notion
+  Herramientas Opcionales:      Figma(diseño), Canva(logo)
 
 ## PASOS A SEGUIR
 
@@ -57,23 +79,34 @@ Cada grupo presenta el proyecto en 15 minutos.
   * Aprender a crear modelos de datos esquemas de base de datos
   * Ideas futuras: capa seguridad, distintos roles de usuario, agregar X funcionalidades, dashboard de compras realizadas
  
-  ![captura pagina Home proyecto gestor restaurante](https://github.com/user-attachments/assets/e3af9dc9-aa34-4d6c-829e-be1e9e472edf)
+## 📷 Capturas De Pantalla
 
-  Aplicación de gestión integral para restaurantes desarrollada con Spring Boot.
+  * Aplicación de gestión integral para restaurantes desarrollada con Spring Boot.
+  * Home Version 1.0.0, Navbar (Logo, Titulo, Menú), Body, Footer.
+  ![captura pagina Home proyecto gestor restaurante](https://github.com/user-attachments/assets/e3af9dc9-aa34-4d6c-829e-be1e9e472edf)
 
   Muestra de la Home con carrusel funcional.
   ![Captura-Carrousel-y-fragments-100%](https://github.com/user-attachments/assets/9760c95d-0422-4693-8dbc-fd37c2f74258)
 
 - La imagen me ha quedado algo rara al cambiar de monitor, si da tiempo la arreglaré.
   
-![Home, tamaño menu y logo arreglados, carrusel width normalizado con heigth.](https://github.com/user-attachments/assets/e38d3cbd-b766-4f8f-8341-775cd6f90494)
+![Home, tamaño menu y logo arreglados, carrusel width normalizado con height.](https://github.com/user-attachments/assets/e38d3cbd-b766-4f8f-8341-775cd6f90494)
 
 
-- Imagen de la pagina home con la  implementación de logotipo, titulo, menu-circular, carrusel y footer, los elementos los elementos titulo, footer, menu-circular se cargan dinamicamente mediante fragments,
-- las imagenes desde la carpeta img dentro de static resources, siguiente captura correción de posiciones, tamaños de imagenes y opcional funcionalidad de los botones.
+- Imagen de la pagina home con la implementación de logotipo, titulo, menu-circular, carrusel y footer, los elementos título, menu-circular se cargan dinámicamente mediante fragments,
+- las imágenes desde la carpeta img dentro de static resources, siguiente captura corrección de posiciones, tamaños de imágenes y opcional funcionalidad de los botones.
 
+## 📁 Estructura De Proyectos
+  ![img_2.png](img_2.png)
 
-Acontinuación deben colocarse las capturas que muestren las diferentes pantallas y su contenido
+## ⚙️ Configuración Del Entorno
+  1. Prerrequisitos
+    * JDK 24 O SUPERIOR
+    * Maven 3.8+
+    * MySQL 8.x
+    * IntelliJ IDEA (recomendado)
+
+A continuación deben colocarse las capturas que muestren las diferentes pantallas y su contenido
 ---
 ## Descripción General
 

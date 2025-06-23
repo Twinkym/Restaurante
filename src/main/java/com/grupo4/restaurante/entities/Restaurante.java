@@ -3,12 +3,20 @@ package com.grupo4.restaurante.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-/**
+/*
  * Entidad que representa la información del propio restaurante.
  * Se espera que en la BBDD exista una unica fila en esta tabla,
  * conteniendo los datos del establecimiento que utiliza la aplicación.
  */
 
+/**
+ * Entidad Empleado.
+ * @author David De La Puente
+ * @author Luis Miguel
+ * @version 1.0
+ * @since 2025-05-28
+ *
+ */
 @Builder    // Patron de diseño Builder para crear objetos (Lombok).
 @Getter     // Genera todos los getters (Lombok).
 @Setter     // Genera todos los Setters (Lombok).

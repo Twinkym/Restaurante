@@ -5,6 +5,14 @@ import lombok.*;
 
 import java.util.List;
 
+/**
+ * Entidad Empleado.
+ * @author David De La Puente
+ * @author Luis Miguel
+ * @version 1.0
+ * @since 2025-05-28
+ *
+ */
 @Builder
 @Getter
 @Setter
