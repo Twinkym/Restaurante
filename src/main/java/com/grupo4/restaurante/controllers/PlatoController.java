@@ -1,12 +1,8 @@
 package com.grupo4.restaurante.controllers;
 
-import com.grupo4.restaurante.entities.Plato;
-
 import com.grupo4.restaurante.services.PlatoService;
-
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/platos")
@@ -18,13 +14,4 @@ public class PlatoController {
         this.platoService = platoService;
     }
 
-    @GetMapping("/calientes")
-    public List<Plato> getPlatosCalientes() {
-        return platoService.obtenerPlatosCalientes();
-    }
-
-    @GetMapping("/frios")
-    public List<Plato> getPlatosFrios() {
-        return platoService.obtenerPlatosFrios();
-    }
 }

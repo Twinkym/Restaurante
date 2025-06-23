@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Lista de mesas</title>
 
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
@@ -10,23 +10,23 @@
 </head>
 <body>
 
-    <a th:href="@{/mesa/new}" class="btn btn-success mb-3">
+    <a class="btn btn-success mb-3" th:href="@{/mesa/new}">
         <i class="fa-solid fa-plus me-2"></i>Crear nueva mesa
     </a>
 
-    <div th:if="${error}" class="alert alert-danger" role="alert">
+    <div class="alert alert-danger" role="alert" th:if="${error}">
         <i class="fa-solid fa-triangle-exclamation me-1"></i>
         <span th:text="${error}"></span>
     </div>
 
-    <div th:if="${mesas.isEmpty()}" class="alert alert-warning">
+    <div class="alert alert-warning" th:if="${mesas.isEmpty()}">
         <i class="fa-solid fa-circle-exclamation me-1"></i>
         <span>No hay mesas registradas.
             <a th:href="@{mesa/new}">¿Quieres crear una?</a>
         </span>
     </div>
 
-    <div th:unless="${mesas.isEmpty()}" class="table-responsive">
+    <div class="table-responsive" th:unless="${mesas.isEmpty()}">
         <table class="table table-striped table-hover">
             <thead class="table-dark">
             <tr>
@@ -37,20 +37,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="mesa : ${mesas}" class="align-middle">
+            <tr class="align-middle" th:each="mesa : ${mesas}">
                 <td th:text="${mesa.id}"></td>
                 <td th:text="${mesa.numero}"></td>
                 <td th:text="${mesa.capacidad}"></td>
                 <td th:text="${mesa.disponible}"></td>
                 <td>
                     <div class="d-flex gap-1">
-                        <button type="button"
-                                class="btn btn-danger btn-sm btn-delete"
-                                data-bs-toggle="modal"
+                        <button class="btn btn-danger btn-sm btn-delete"
                                 data-bs-target="#confirmDeleteModal"
+                                data-bs-toggle="modal"
                                 th:data-mesa-id="${mesa.id}"
                                 th:data-mesa-numero="${mesa.numero}"
-                                title="Eliminar mesa">
+                                title="Eliminar mesa"
+                                type="button">
                             <i class="fa-solid fa-trash me-1"></i>Borrar
                         </button>
                     </div>
@@ -77,20 +77,20 @@
                         <i class="fa-solid fa-triangle-exclamation me-2 text-danger"></i>
                         Confirmar eliminación
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Estás seguro de eliminar la mesa <strong id="mesaToDelete"></strong>?</p>
+                    <p>¿Estás seguro de eliminar la mesa<strong id="mesaToDelete"></strong>?</p>
                     <div class="alert alert-warning mt-3">
                         <i class="fa-solid fa-triangle-exclamation me-2"></i>
                         <strong>¡Atención!</strong> Esta acción no se puede deshacer.
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">
                         <i class="fa-solid fa-xmark me-1"></i>Cancelar
                     </button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                    <button class="btn btn-danger" id="confirmDeleteBtn" type="button">
                         <i class="fa-solid fa-trash-can me-1" ></i>Eliminar
                     </button>
                 </div>

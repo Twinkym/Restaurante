@@ -20,14 +20,14 @@ public class ReservaService {
     }
 
     public Optional<Reserva> crearReserva(ReservaForm form) {
-        Optional<Mesa> mesaOpt = mesaService.encontrarMesaDisponible(form.getFecha(), form.getComensales(), form.getHora());
+        Optional<Mesa> mesaOpt = mesaService.encontrarMesaDisponible(form.getFecha(), form.getNumComensales(), form.getHoraTurno());
 
         if (mesaOpt.isEmpty()) return Optional.empty();
 
         Reserva reserva = Reserva.builder()
                 .fecha(form.getFecha())
-                .hora(form.getHora())
-                .numComensales(form.getComensales())
+                .hora(form.getHoraTurno())
+                .numComensales(form.getNumComensales())
                 .mesa(mesaOpt.get())
                 .build();
 

@@ -1,8 +1,10 @@
 package com.grupo4.restaurante; // Paquete raíz del proyecto, contiene la clase principal.
 
 //Importación de paquetes necesarios para iniciar la aplicación.
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Anotación @SpringBootApplication:
@@ -27,4 +29,10 @@ public class RestauranteApplication {
 		SpringApplication.run(RestauranteApplication.class, args);
 	}
 
+	@Bean
+	public CommandLineRunner mostrarUrl() {
+		return args -> {
+			System.out.println("\n\n🎉 Aplicación iniciada correctamente en : http://localhost:8080\n");
+		};
+	}
 }
