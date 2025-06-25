@@ -31,7 +31,7 @@ public class MenuController {
         return "menus/pescado";
     }
 
-    @GetMapping("/Vegetariano")
+    @GetMapping("/vegetariano")
     public String mostrarMenuVegetariano(Model model) {
         model.addAttribute("titulo", "Menú Vegetariano");
         return "menus/vegetariano";

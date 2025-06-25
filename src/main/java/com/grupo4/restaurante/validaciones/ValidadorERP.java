@@ -1,6 +1,6 @@
 package com.grupo4.restaurante.validaciones;
 
-import com.grupo4.restaurante.dto.ReservaForm;
+import com.grupo4.restaurante.dto.ReservaFormDTO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,7 +15,7 @@ public class ValidadorERP {
     /*
      * Normaliza los datos del formulario de reserva: asegura que haya fecha y número de comensales válidos.
      */
-    public static void normalizarReservaForm(ReservaForm form) {
+    public static void normalizarReservaForm(ReservaFormDTO form) {
         if (form.getFecha() == null) {
             form.setFecha(LocalDate.now());
         }
@@ -27,7 +27,7 @@ public class ValidadorERP {
     /**
      * Verifica si el turno ha sido seleccionado correctamente 8no nulo).
      */
-    public static boolean validarTurnoSeleccionado(ReservaForm form) {
+    public static boolean validarTurnoSeleccionado(ReservaFormDTO form) {
         return form.getHoraTurno() != null;
     }
     /*
@@ -35,7 +35,7 @@ public class ValidadorERP {
      * @param reservaForm formulario de reserva a validar.
      * @return true si el formulario es válido, false en caso contrario.
      */
-    public static boolean esFormularioReservaValido(ReservaForm reservaForm) {
+    public static boolean esFormularioReservaValido(ReservaFormDTO reservaForm) {
         return reservaForm != null && reservaForm.getFecha() != null && reservaForm.getNumComensales() != null && reservaForm.getNumComensales() > 0;
     }
 
@@ -43,7 +43,7 @@ public class ValidadorERP {
      * Establece valores por defecto al formulario de reserva si alguno es nulo.
      * @param reservaForm formulario a completar.
      */
-    public static void aplicarValoresPorDefecto(ReservaForm reservaForm) {
+    public static void aplicarValoresPorDefecto(ReservaFormDTO reservaForm) {
         if (reservaForm.getFecha() == null) {
             reservaForm.setFecha(LocalDate.now());
         }

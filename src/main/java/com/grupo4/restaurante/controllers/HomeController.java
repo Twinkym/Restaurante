@@ -6,72 +6,42 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/*
+ * Controlador principal que gestiona las rutas del sitio web del restaurante.
+ * Cada mét-odo está vinculado a una vista Thymeleaf ubicada en la carpeta "templates".
+ * Función que responde a las peticiones GET an la raíz del sitio ("/").
+ * Devuelve la vista "home", ubicada en la carpeta templates.
+ *
+ * Author: David De La Puente Enriquez y Luis Miguel Haro.
+ * @return Nombre de la vista "home" (sin extensión .html)
+ * */
 @Controller
 public class HomeController {
 
     /**
-     * Función que responde a las peticiones GET an la raís del sitio ("/").
-     * Devuelve la vista "home", ubicada en la carpeta templates.
+     *  Mapea la URL raíz ("/") a la vista home.html
      *
-     * @return  el nombre de la vista (sin extensión .html)
-     * */
-    // Mapea la URL raíz ("/") a la vista home.html
+     * @param model Objeto para enviar datos a la vista.
+     * @param request Petición HTTP con la URI solicitada.
+     * @return Nombre de la plantilla "home" (sin extensión .html).
+      */
+
     @GetMapping("/")
     public String home(Model model, HttpServletRequest request) {
-        PaginaDTO pagina = new PaginaDTO("Inicio | Restaurante");
         model.addAttribute("mensaje", "Bienvenido a Restaurante");
+        model.addAttribute("pagina", new PaginaDTO("Inicio | Restaurante"));
         model.addAttribute("uri", request.getRequestURI());
+        model.addAttribute("footerType", "footer-default");
         return "home";  // Se refiere al archivo templates/home.html
     }
 
-
-    @GetMapping("/login")
-    public String login(Model model, HttpServletRequest request) {
-        model.addAttribute("pagina", new PaginaDTO("Iniciar sesión"));
-        model.addAttribute("uri", request.getRequestURI());
-        return "login";     // Se refiere a la vista login (sin extensión .html)
-    }
-
-    @GetMapping("/registro")
-    public String registro(Model model, HttpServletRequest request) {
-        model.addAttribute("pagina", new PaginaDTO("Registro de Usuario"));
-        model.addAttribute("uri", request.getRequestURI());
-        return "registro";      // Se refiere a la vista registro (sin extensión .html)
-    }
-
+    /**
+     * Página de error 404 o acceso denegado.
+     */
     @GetMapping("/error")
     public String error(Model model, HttpServletRequest request ) {
         model.addAttribute("pagina", new PaginaDTO("Error"));
         model.addAttribute("uri", request.getRequestURI());
         return "error";     // Se refiere a la vista error para mostrar la página 404(sin extensión .html)
     }
-
-    @GetMapping("/contacto")
-    public String contacto(Model model, HttpServletRequest request) {
-        model.addAttribute("pagina", new PaginaDTO("Contacto"));
-        model.addAttribute("uri", request.getRequestURI());
-        return "contacto";      // Se refiere a la vista contacto (sin extensión .html)
-    }
-
-    @GetMapping("/menu/vegano")
-    public String menuVegano(Model model, HttpServletRequest request  ) {
-        model.addAttribute("pagina", new PaginaDTO("Menú Vegano"));
-        model.addAttribute("uri", request.getRequestURI());
-        return "vegetariano";        // Se refiere a la vista categorias (sin extensión .html)
-    }
-
-    @GetMapping("//menu/carne")
-    public String meuCarne(Model model, HttpServletRequest request  ) {
-        model.addAttribute("pagina", new PaginaDTO("Menú de Carne"));
-        model.addAttribute("uri", request.getRequestURI());
-        return "carne";        // Se refiere a la vista categorias (sin extensión .html)
-    }
-
-    @GetMapping("/menu/pescado")
-    public String menuPescado(Model model, HttpServletRequest request  ) {
-        model.addAttribute("pagina", new PaginaDTO("Menú de Pescado"));
-        model.addAttribute("uri", request.getRequestURI());
-        return "pescado";        // Se refiere a la vista categorias (sin extensión .html)
-    }
-
 }

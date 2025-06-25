@@ -157,6 +157,13 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- ========================================================================== -->
+		<!-- ===== DEPENDENCIA PARA EL ENVÍO DE CORREO ELECTRÓNICO EN SPRING COOT ===== -->
+		<!-- ========================================================================== -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 		<!-- ================================ -->
 		<!-- ===== DEPENDENCIAS DE TESTING ===== -->
 		<!-- ================================ -->
