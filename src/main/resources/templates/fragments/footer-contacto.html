@@ -1,0 +1,14 @@
+<!-- src/main/resources/templates/fragments/footer-contacto.html -->
+<!-- Este footer está diseñado específicamente para la página de contacto,
+     incluyendo un enlace directo a ella. -->
+<footer class="bg-dark text-white text-center py-3 mt-auto" th:fragment="footerContacto" xmlns:th="http://www.thymeleaf.org">
+    <div class="container">
+        <p class="mb-0">
+            &copy; <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}">2025</span> Grupo 4 Restaurante. Todos los derechos reservados.
+        </p>
+        <p class="mb-0">
+            <!-- El texto "Contacto" ahora es un enlace a la página de contacto -->
+            ¿Tienes preguntas? <a aria-label="Ir a la página de contacto" class="text-white text-decoration-none" th:href="@{/contacto}">Contáctanos</a>
+        </p>
+    </div>
+</footer>

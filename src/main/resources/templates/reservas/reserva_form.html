@@ -36,7 +36,7 @@
 
     <h2>Hacer una Reserva</h2>
 
-    <form class="needs-validation" method="post" novalidate th:action="@{/reservas/guardar}" th:object="${reservaForm}">
+    <form class="needs-validation" method="post" novalidate th:action="@{/reservas/guardar}" th:object="${reservaFormDTO}">
         <!.. Fecha de reserva -->
         <div class="mb-3">
             <label class="form-label" for="fecha">

@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface ReservaRepository extends JpaRepository<Reserva, Long> {
 
-    // TODO MEJORAR con logica de horas
     List<Reserva> findAllByFecha(LocalDate fecha);
 
     boolean existsByFechaAndMesa(LocalDate fecha, Mesa mesa);
