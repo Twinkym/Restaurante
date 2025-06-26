@@ -158,7 +158,15 @@
 		</dependency>
 
 		<!-- ========================================================================== -->
+<<<<<<< creacióndelayout
+<<<<<<< creacióndelayout
 		<!-- ===== DEPENDENCIA PARA EL ENVÍO DE CORREO ELECTRÓNICO EN SPRING BOOT ===== -->
+=======
+		<!-- ===== DEPENDENCIA PARA EL ENVÍO DE CORREO ELECTRÓNICO EN SPRING COOT ===== -->
+>>>>>>> main
+=======
+		<!-- ===== DEPENDENCIA PARA EL ENVÍO DE CORREO ELECTRÓNICO EN SPRING BOOT ===== -->
+>>>>>>> main
 		<!-- ========================================================================== -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
