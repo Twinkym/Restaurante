@@ -158,7 +158,7 @@
 		</dependency>
 
 		<!-- ========================================================================== -->
-		<!-- ===== DEPENDENCIA PARA EL ENVÍO DE CORREO ELECTRÓNICO EN SPRING COOT ===== -->
+		<!-- ===== DEPENDENCIA PARA EL ENVÍO DE CORREO ELECTRÓNICO EN SPRING BOOT ===== -->
 		<!-- ========================================================================== -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
