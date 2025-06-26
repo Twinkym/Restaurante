@@ -1,9 +1,15 @@
 package com.grupo4.restaurante.controllers;
 
+import com.grupo4.restaurante.entities.Plato;
+import com.grupo4.restaurante.services.PlatoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.model.IAttribute;
+
+import java.util.List;
 
 /**
  * Menu Controller.
@@ -18,21 +24,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/menus")
 public class MenuController {
 
+    @Autowired
+    private PlatoService platoService;
+
     @GetMapping("/carne")
-    public String mostrarMenuCarne(Model model) {
+    public String menuCarne(Model model) {
+        List<Plato> platosCarne = platoService.obtenerPlatosPorCategoria("carne");
         model.addAttribute("titulo", "Menú de Carne");
+        model.addAttribute("platos", platosCarne);
         return "menus/carne";
     }
 
     @GetMapping("/pescado")
-    public String mostrarMenuPescado(Model model) {
+    public String menuPescado(Model model) {
+        List<Plato> platosPescado = platoService.obtenerPlatosPorCategoria("pescado");
         model.addAttribute("titulo", "Menú de Pescado");
+        model.addAttribute("platos", platosPescado);
         return "menus/pescado";
     }
 
     @GetMapping("/vegetariano")
-    public String mostrarMenuVegetariano(Model model) {
-        model.addAttribute("titulo", "Menú Vegetariano");
+    public String menuVegetariano(Model model){
+        List<Plato> platoVegetariano = platoService.obtenerPlatosPorCategoria("vegetariano");
+        model.addAttribute("titulo", "Menu vegetariano");
+        model.addAttribute("platos", platoVegetariano);
         return "menus/vegetariano";
     }
 }

@@ -1,40 +1,45 @@
+<!-- templates/menus/vegetariano.html -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="ie=edge" http-equiv="X-UA-Compatible">
-  <meta content="David De La Puente, Luis Miguel, Alejandro" name="Author">
-  <link rel="icon" th:href="@{/img/logos/logotipo_restaurante.png}" type="image/x-icon">
-    <title th:text="${titulo}">Menú Vegetariano</title>
-  <!-- Bootstrap 5 -->
+  <title th:text="${titulo}">Menú Vegetariano</title>
+
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- -->
-  <!-- Ruta Archivos Estáticos -->
-  <link rel="stylesheet" th:href="@{/css/detalles.css}">
   <link rel="stylesheet" th:href="@{/css/menu-circular.css}">
+  <link rel="stylesheet" th:href="@{/css/detalles.css}">
 </head>
 <body>
-<!-- Insertar Cabecera -->
-<div th:replace="~{fragments/header :: header}">
-  <!-- Menú Circular -->
-  <div th:replace="~{fragments/menu-circular :: menu-circular}"></div>
-</div>
-<!-- Página del menú vegetariano.
-     Aquí se mostrarán los platos disponibles del menú vegetariano o vegano.
-      -->
+
+<div th:replace="~{fragments/header :: header(${titulo})}"></div>
+
 <main class="container mt-4">
-  <h2 th:text="${titulo}">Menú Vegetariano</h2>
-  <hr>
-  <p>Aquí se mostrarán los platos Vegetarianos.</p>
-  <a class="btn btn-secondary mt-3" th:href="@{/}">Volver a la Home</a>
+  <h2 class="text-center mb-4" th:text="${titulo}">Menú Vegetariano</h2>
+
+  <div class="row g-4">
+    <div class="col-12 col-sm-6 col-lg-4" th:each="plato : ${platos}">
+      <div class="card h-100 shadow-sm">
+        <img th:src="@{${plato.imagenUrl}}" class="card-img-top img-fluid" th:alt="${plato.nombre}">
+        <div class="card-body d-flex flex-column justify-content-between">
+          <h5 class="card-title" th:text="${plato.nombre}">Nombre del Plato</h5>
+          <p class="card-text" th:text="${plato.descripcion}">Descripción</p>
+          <div class="d-flex justify-content-between align-items-center mt-auto">
+            <span class="fw-bold" th:text="${plato.precio} + ' €'">12 €</span>
+            <button class="btn btn-primary btn-sm" type="button">Añadir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a class="btn btn-secondary" th:href="@{/}">Volver a la Home</a>
+  </div>
 </main>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 
-  <script crossorigin="anonymous" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-  <script crossorigin="anonymous" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
