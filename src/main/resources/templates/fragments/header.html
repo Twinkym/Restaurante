@@ -24,6 +24,12 @@
                     </ul>
                 </div>
                 <a class="btn mb-1 me-2" th:classappend="${#httpServletRequest?.requestURI?.contains('/contacto')} ? 'btn-success' : 'btn-outline-success'" th:href="@{/contacto}">Contacto</a>
+
+                <!-- Botón Logín -->
+                <button class="btn btn-outline-secondary mb-1 me-2" data-bc-target="#modalLogin" data-bs-toggle="modal">Iniciar sesión</button>
+                <!-- Botón Logín -->
+                <button class="btn btn-outline-secondary mb-1 me-2" data-bc-target="#modalRegistro" data-bs-toggle="modal">Registrarse</button>
+
             </div>
         </div>
     </nav>
