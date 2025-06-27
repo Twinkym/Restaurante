@@ -34,7 +34,7 @@ DELETE FROM restaurante; -- Esta tabla solo tiene una fila, pero la eliminamos p
 -- ===========================
 -- INSERCIÓN DE CATEGORÍAS
 -- ===========================
-INSERT INTO categorias (id, nombre, descripcion, activo) VALUES
+INSERT INTO categorias (id, nombre, descripcion) VALUES
 (1, 'Bebidas', 'Bebidas frías y calientes'),
 (2, 'Entrantes', 'Aperitivos y entrantes para empezar'),
 (3, 'Platos Principales', 'La especialidad de la casa'),
@@ -121,47 +121,47 @@ ALTER TABLE plato AUTO_INCREMENT = 1; -- (si usas autoincremento)
 INSERT INTO plato (nombre, descripcion, categoria, precio, imagen_url)
 VALUES
   -- Platos de carne
-  ('Entrecot a la parrilla', 'Jugoso entrecot de ternera a la brasa', 'carne', 18.50, '/img/platos/Entrecot-a-la-parrilla.webp', true),
-  ('Costillas BBQ', 'Costillas cocinadas a fuego lento con salsa BBQ casera', 'carne', 15.00, '/img/platos/Costillas-BBQ.webp', true),
-  ('Pollo al ajillo', 'Clásico plato español con ajo y perejil', 'carne', 12.00, '/img/platos/Pollo-al-ajillo.webp', true),
-  ('Conejo a la parrilla', 'Clásico plato español de montaña', 'carne', 10.00, '/img/platos/Conejo-a-la-parrilla.webp', true),
-  ('Serranito sevillano', 'Tapa clásica sevillana', 'carne', 7.00, '/img/platos/Serranito-sevillano.webp', true),
+  ('Entrecot a la parrilla', 'Jugoso entrecot de ternera a la brasa', 'carne', 18.50, '/img/platos/Entrecot-a-la-parrilla.webp'),
+  ('Costillas BBQ', 'Costillas cocinadas a fuego lento con salsa BBQ casera', 'carne', 15.00, '/img/platos/Costillas-BBQ.webp'),
+  ('Pollo al ajillo', 'Clásico plato español con ajo y perejil', 'carne', 12.00, '/img/platos/Pollo-al-ajillo.webp'),
+  ('Conejo a la parrilla', 'Clásico plato español de montaña', 'carne', 10.00, '/img/platos/Conejo-a-la-parrilla.webp'),
+  ('Serranito sevillano', 'Tapa clásica sevillana', 'carne', 7.00, '/img/platos/Serranito-sevillano.webp'),
 
   -- Platos de pescado
-  ('Lomo de Merluza al Horno', 'Merluza fresca horneada con patatas panaderas y cebolla caramelizada', 'pescado', 14.50, '/img/platos/merluza-al-horno-con-patatas.webp', true),
-  ('Tartar de Atún Rojo', 'Atún rojo marinado con soja y sésamo sobre base de aguacate', 'pescado', 13.50, '/img/platos/tartar-de-atún-rojo.webp', false),
-  ('Pulpo a la Gallega', 'Pulpo cocido con patatas, pimentón y aceite de oliva virgen extra', 'pescado', 12.00, '/img/platos/pulpo-a-la-gallega.webp', true),
-  ('Bacalao al Pil-Pil', 'Tradicional bacalao con salsa emulsionada de ajo y aceite', 'pescado', 10.50, '/img/platos/Bacalao-al-Pil-Pil.webp', true),
-  ('Salmón Teriyaki', 'Lomo de salmón glaseado con salsa teriyaki y verduras salteadas', 'pescado', 16.50, '/img/platos/teriyaki-salmon.webp', true),
-  ('tartar-de-atún-rojo', 'Delicioso tartar de atún rojo con cebolla caramelizada', 'pescado', 12.30, '/img/platos/tartar-de-atún-rojo.webp', true),
+  ('Lomo de Merluza al Horno', 'Merluza fresca horneada con patatas panaderas y cebolla caramelizada', 'pescado', 14.50, '/img/platos/merluza-al-horno-con-patatas.webp'),
+  ('Tartar de Atún Rojo', 'Atún rojo marinado con soja y sésamo sobre base de aguacate', 'pescado', 13.50, '/img/platos/tartar-de-atún-rojo.webp'),
+  ('Pulpo a la Gallega', 'Pulpo cocido con patatas, pimentón y aceite de oliva virgen extra', 'pescado', 12.00, '/img/platos/pulpo-a-la-gallega.webp'),
+  ('Bacalao al Pil-Pil', 'Tradicional bacalao con salsa emulsionada de ajo y aceite', 'pescado', 10.50, '/img/platos/Bacalao-al-Pil-Pil.webp'),
+  ('Salmón Teriyaki', 'Lomo de salmón glaseado con salsa teriyaki y verduras salteadas', 'pescado', 16.50, '/img/platos/teriyaki-salmon.webp'),
+  ('tartar-de-atún-rojo', 'Delicioso tartar de atún rojo con cebolla caramelizada', 'pescado', 12.30, '/img/platos/tartar-de-atún-rojo.webp'),
 
   -- Platos vegetarianos
-  ('Risotto de Setas', 'Cremoso arroz arbóreo con mezcla de setas silvestres y parmesano', 'vegetariano', 9.00, '/img/platos/risotto-de-setas.webp', true),
-  ('Hamburguesa Vegana', 'Hamburguesa de lentejas y remolacha con pan integral y vegetales frescos', 'vegetariano', 10.30, '/img/platos/Hamburguesa-Vegana.webp', true),
-  ('Wok de Verduras', 'Verduras de temporada salteadas al wok con salsa de soja', 'vegetariano', 11.00, '/img/platos/wok-de-verduras.webp', true),
-  ('Lasaña de Verduras', 'Capas de berenjena, calabacín y tomate con bechamel vegetal', 'vegetariano', 13.50, '/img/platos/Lasaña-Vegetal.webp', true);
+  ('Risotto de Setas', 'Cremoso arroz arbóreo con mezcla de setas silvestres y parmesano', 'vegetariano', 9.00, '/img/platos/risotto-de-setas.webp'),
+  ('Hamburguesa Vegana', 'Hamburguesa de lentejas y remolacha con pan integral y vegetales frescos', 'vegetariano', 10.30, '/img/platos/Hamburguesa-Vegana.webp'),
+  ('Wok de Verduras', 'Verduras de temporada salteadas al wok con salsa de soja', 'vegetariano', 11.00, '/img/platos/wok-de-verduras.webp'),
+  ('Lasaña de Verduras', 'Capas de berenjena, calabacín y tomate con bechamel vegetal', 'vegetariano', 13.50, '/img/platos/Lasaña-Vegetal.webp');
 INSERT INTO plato (nombre, descripcion, categoria, precio, imagen_url)
 VALUES
   -- Platos de carne
-  ('Entrecot a la parrilla', 'Jugoso entrecot de ternera a la brasa', 'carne', 18.50, '/img/platos/entrecot.webp', true),
-  ('Costillas BBQ', 'Costillas cocinadas a fuego lento con salsa BBQ casera', 'carne', 15.00, '/img/platos/costillas.webp', true),
-  ('Pollo al ajillo', 'Clásico plato español con ajo y perejil', 'carne', 12.00, '/img/platos/pollo-ajillo.webp', true),
-  ('Conejo a la parrilla', 'Clásico plato español de montaña', 'carne', 10.00, '/img/platos/conejo-a-la-parrilla.webp', true),
-  ('Serranito sevillano', 'Tapa clásica sevillana', 'carne', 7.00, '/img/platos/Serranito-sevillano.webp', true),
+  ('Entrecot a la parrilla', 'Jugoso entrecot de ternera a la brasa', 'carne', 18.50, '/img/platos/entrecot.webp'),
+  ('Costillas BBQ', 'Costillas cocinadas a fuego lento con salsa BBQ casera', 'carne', 15.00, '/img/platos/costillas.webp'),
+  ('Pollo al ajillo', 'Clásico plato español con ajo y perejil', 'carne', 12.00, '/img/platos/pollo-ajillo.webp'),
+  ('Conejo a la parrilla', 'Clásico plato español de montaña', 'carne', 10.00, '/img/platos/conejo-a-la-parrilla.webp'),
+  ('Serranito sevillano', 'Tapa clásica sevillana', 'carne', 7.00, '/img/platos/Serranito-sevillano.webp'),
 
   -- Platos de pescado
-  ('Lomo de Merluza al Horno', 'Merluza fresca horneada con patatas panaderas y cebolla caramelizada', 'pescado', 14.50, '/img/platos/merluza-horno.webp', true),
-  ('Tartar de Atún Rojo', 'Atún rojo marinado con soja y sésamo sobre base de aguacate', 'pescado', 16.00, '/img/platos/tartar-atun.webp', false),
-  ('Pulpo a la Gallega', 'Pulpo cocido con patatas, pimentón y aceite de oliva virgen extra', 'pescado', 17.00, '/img/platos/pulpo-gallega.webp', true),
-  ('Bacalao al Pil-Pil', 'Tradicional bacalao con salsa emulsionada de ajo y aceite', 'pescado', 15.50, '/img/platos/bacalao-pilpil.webp', true),
-  ('Salmón Teriyaki', 'Lomo de salmón glaseado con salsa teriyaki y verduras salteadas', 'pescado', 16.50, '/img/platos/salmon-teriyaki.webp', true),
+  ('Lomo de Merluza al Horno', 'Merluza fresca horneada con patatas panaderas y cebolla caramelizada', 'pescado', 14.50, '/img/platos/merluza-horno.webp'),
+  ('Tartar de Atún Rojo', 'Atún rojo marinado con soja y sésamo sobre base de aguacate', 'pescado', 16.00, '/img/platos/tartar-atun.webp'),
+  ('Pulpo a la Gallega', 'Pulpo cocido con patatas, pimentón y aceite de oliva virgen extra', 'pescado', 17.00, '/img/platos/pulpo-gallega.webp'),
+  ('Bacalao al Pil-Pil', 'Tradicional bacalao con salsa emulsionada de ajo y aceite', 'pescado', 15.50, '/img/platos/bacalao-pilpil.webp'),
+  ('Salmón Teriyaki', 'Lomo de salmón glaseado con salsa teriyaki y verduras salteadas', 'pescado', 16.50, '/img/platos/salmon-teriyaki.webp'),
 
   -- Platos vegetarianos
-  ('Risotto de Setas', 'Cremoso arroz arbóreo con mezcla de setas silvestres y parmesano', 'vegetariano', 13.00, '/img/platos/risotto-setas.webp', true),
-  ('Hamburguesa Vegana', 'Hamburguesa de lentejas y remolacha con pan integral y vegetales frescos', 'vegetariano', 12.00, '/img/platos/hamburguesa-vegana.webp', true),
-  ('Wok de Verduras', 'Verduras de temporada salteadas al wok con salsa de soja', 'vegetariano', 11.00, '/img/platos/wok-verduras.webp', true),
-  ('Ensalada de Quinoa', 'Quinoa con aguacate, tomate cherry, pepino y vinagreta cítrica', 'vegetariano', 10.50, '/img/platos/ensalada-quinoa.webp', false),
-  ('Lasaña de Verduras', 'Capas de berenjena, calabacín y tomate con bechamel vegetal', 'vegetariano', 13.50, '/img/platos/lasagna-vegetal.webp', true);
+  ('Risotto de Setas', 'Cremoso arroz arbóreo con mezcla de setas silvestres y parmesano', 'vegetariano', 13.00, '/img/platos/risotto-setas.webp'),
+  ('Hamburguesa Vegana', 'Hamburguesa de lentejas y remolacha con pan integral y vegetales frescos', 'vegetariano', 12.00, '/img/platos/hamburguesa-vegana.webp'),
+  ('Wok de Verduras', 'Verduras de temporada salteadas al wok con salsa de soja', 'vegetariano', 11.00, '/img/platos/wok-verduras.webp'),
+  ('Ensalada de Quinoa', 'Quinoa con aguacate, tomate cherry, pepino y vinagreta cítrica', 'vegetariano', 10.50, '/img/platos/ensalada-quinoa.webp'),
+  ('Lasaña de Verduras', 'Capas de berenjena, calabacín y tomate con bechamel vegetal', 'vegetariano', 13.50, '/img/platos/lasagna-vegetal.webp');
 
 
 
