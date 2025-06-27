@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title th:text="${titulo}">Menú Vegetariano</title>
+  <title th:text="${tituloPagina}">Restaurante ERP - CARTA VEGETARIANA</title>
 
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
   <link rel="stylesheet" th:href="@{/css/menu-circular.css}">
@@ -12,10 +12,10 @@
 </head>
 <body>
 
-<div th:replace="~{fragments/header :: header(${titulo})}"></div>
+<div th:replace="~{fragments/header :: header(${tituloCabecera})}">VEGETARIANOS</div>
 
 <main class="container mt-4">
-  <h2 class="text-center mb-4" th:text="${titulo}">Menú Vegetariano</h2>
+  <h2 class="text-center mb-4" th:text="${tituloContenido}">Lista de platos de Carta Vegetariana</h2>
 
   <div class="row g-4">
     <div class="col-12 col-sm-6 col-lg-4" th:each="plato : ${platos}">

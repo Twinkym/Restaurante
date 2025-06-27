@@ -30,7 +30,9 @@ public class MenuController {
     @GetMapping("/carne")
     public String menuCarne(Model model) {
         List<Plato> platosCarne = platoService.obtenerPlatosPorCategoria("carne");
-        model.addAttribute("titulo", "Menú de Carne");
+        model.addAttribute("tituloPagina", "Restaurante ERP - Carta de Carnes");
+        model.addAttribute("tituloCabecera", "Carta de Carnes");
+        model.addAttribute("tituloContenido", "Listado de platos de Carne");
         model.addAttribute("platos", platosCarne);
         return "menus/carne";
     }
@@ -38,7 +40,10 @@ public class MenuController {
     @GetMapping("/pescado")
     public String menuPescado(Model model) {
         List<Plato> platosPescado = platoService.obtenerPlatosPorCategoria("pescado");
-        model.addAttribute("titulo", "Menú de Pescado");
+        model.addAttribute("tituloPagina", "Restaurante ERP - Carta de Pescados");
+        model.addAttribute("tituloCabecera", "Carta de Pescados");
+        model.addAttribute("tituloContenido", "Lista de Platos de Pescado");
+
         model.addAttribute("platos", platosPescado);
         return "menus/pescado";
     }
@@ -46,7 +51,10 @@ public class MenuController {
     @GetMapping("/vegetariano")
     public String menuVegetariano(Model model){
         List<Plato> platoVegetariano = platoService.obtenerPlatosPorCategoria("vegetariano");
-        model.addAttribute("titulo", "Menu vegetariano");
+        model.addAttribute("tituloPagina", "Restaurante ERP - Carta Vegetariana");
+        model.addAttribute("tituloCabecera", "Carta Vegetariana");
+        model.addAttribute("tituloContenido", "Lista de Platos Vegetarianos");
+
         model.addAttribute("platos", platoVegetariano);
         return "menus/vegetariano";
     }

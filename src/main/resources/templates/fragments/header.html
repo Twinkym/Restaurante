@@ -1,6 +1,6 @@
 <!-- templates/fragments/header.html -->
-<header th:fragment="header(tituloPagina)" xmlns:th="http://www.thymeleaf.org">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm p-3">
+<header th:fragment="header(tituloCabecera) " xmlns:th="http://www.thymeleaf.org">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark shadow-sm p-3">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="logo">
                 <a th:href="@{/}">
@@ -9,13 +9,13 @@
 
             </div>
             <div class="titulo text-center">
-                <h1 class="mb-0" th:text="${tituloPagina}">Gestor de Restaurante</h1>
+                <h1 class="mb-0" th:text="${tituloCabecera}" style="color:white;">Gestor de Restaurante</h1>
             </div>
             <div class="botones">
                 <a class="btn mb-1 me-2" th:classappend="${#httpServletRequest?.requestURI?.contains('/reservas')} ? 'btn-warning' : 'btn-outline-warning' " th:href="@{/reservas}">Reservas</a>
                 <div class="dropdown d-inLine-block">
                     <button aria-expanded="false" class="btn dropdown-toggle mb-1 me-2" data-bs-toggle="dropdown" id="dropdownMenuButton" th:classappend="${#httpServletRequest?.requestURI?.contains('/menus')} ? 'btn-info' : 'btn-outline-info'">
-                        Menús
+                        Menús y Cartas
                     </button>
                     <ul aria-labelledby="dropdownMenuButton" class="dropdown-menu">
                         <li><a class="dropdown-item" th:href="@{/menus/carne}">Carne</a></li>
