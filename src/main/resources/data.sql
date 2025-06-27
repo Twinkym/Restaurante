@@ -35,11 +35,11 @@ DELETE FROM restaurante; -- Esta tabla solo tiene una fila, pero la eliminamos p
 -- INSERCIÓN DE CATEGORÍAS
 -- ===========================
 INSERT INTO categorias (id, nombre, descripcion, activo) VALUES
-(1, 'Bebidas', 'Bebidas frías y calientes', true),
-(2, 'Entrantes', 'Aperitivos y entrantes para empezar', true),
-(3, 'Platos Principales', 'La especialidad de la casa', true),
-(4, 'Postres', 'El toque dulce para finalizar', true),
-(5, 'Menú Infantil', 'Platos diseñados para los más pequeños', true);
+(1, 'Bebidas', 'Bebidas frías y calientes'),
+(2, 'Entrantes', 'Aperitivos y entrantes para empezar'),
+(3, 'Platos Principales', 'La especialidad de la casa'),
+(4, 'Postres', 'El toque dulce para finalizar'),
+(5, 'Menú Infantil', 'Platos diseñados para los más pequeños');
 
 -- ===========================
 -- INSERCIÓN DE PRODUCTOS
@@ -118,7 +118,7 @@ DELETE FROM plato;
 ALTER TABLE plato AUTO_INCREMENT = 1; -- (si usas autoincremento)
 
 
-INSERT INTO plato (nombre, descripcion, categoria, precio, imagen_url, es_caliente)
+INSERT INTO plato (nombre, descripcion, categoria, precio, imagen_url)
 VALUES
   -- Platos de carne
   ('Entrecot a la parrilla', 'Jugoso entrecot de ternera a la brasa', 'carne', 18.50, '/img/platos/Entrecot-a-la-parrilla.webp', true),
@@ -140,7 +140,7 @@ VALUES
   ('Hamburguesa Vegana', 'Hamburguesa de lentejas y remolacha con pan integral y vegetales frescos', 'vegetariano', 10.30, '/img/platos/Hamburguesa-Vegana.webp', true),
   ('Wok de Verduras', 'Verduras de temporada salteadas al wok con salsa de soja', 'vegetariano', 11.00, '/img/platos/wok-de-verduras.webp', true),
   ('Lasaña de Verduras', 'Capas de berenjena, calabacín y tomate con bechamel vegetal', 'vegetariano', 13.50, '/img/platos/Lasaña-Vegetal.webp', true);
-INSERT INTO plato (nombre, descripcion, categoria, precio, imagen_url, es_caliente)
+INSERT INTO plato (nombre, descripcion, categoria, precio, imagen_url)
 VALUES
   -- Platos de carne
   ('Entrecot a la parrilla', 'Jugoso entrecot de ternera a la brasa', 'carne', 18.50, '/img/platos/entrecot.webp', true),
