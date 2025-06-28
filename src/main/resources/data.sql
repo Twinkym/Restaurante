@@ -1,6 +1,6 @@
 -- ==============================================================
 -- SCRIPT DE INSERCIÓN DE DATOS PARA restaurante_db
--- ASEGÚRESE QUE LA BASE DE DATOS 'restaurante_db' YA HA SIDO CREADA
+-- ASEGÚRATE QUE LA BASE DE DATOS 'restaurante_db' YA HA SIDO CREADA
 -- Y QUE LA ESTRUCTURA DE LAS TABLAS YA EXISTE (POR EJEMPLO, VIA JPA/Hibernate)
 -- ==============================================================
 
