@@ -32,10 +32,10 @@ public class ReservaController {
     private final MesaService mesaService;
 
     // Helper method to load common model attributes for the reservation form
-    private void cargarDatosModelo(Model model, ReservaFormDTO reservaForm, List<TurnoInfoDTO> turnos, Boolean mostrarTurnos, String tituloPagina, String tituloCabecera, String tituloContenido) {
-        model.addAttribute("reservaForm", reservaForm);
+    private void cargarDatosModelo(Model model, ReservaFormDTO reservaFormDTO, List<TurnoInfoDTO> turnos, Boolean mostrarTurnos, String tituloPagina, String tituloCabecera, String tituloContenido) {
+        model.addAttribute("reservaFormDTO", reservaFormDTO);
         model.addAttribute("capacidades", IntStream.rangeClosed(1, 8).boxed().toList());
-        model.addAttribute("turnosDisponibles", mostrarTurnos ? turnoService.obtenerTurnosDisponibles(reservaForm.getFecha(), reservaForm.getNumComensales()) : new ArrayList<>());
+        model.addAttribute("turnosDisponibles", mostrarTurnos ? turnoService.obtenerTurnosDisponibles(reservaFormDTO.getFecha(), reservaFormDTO.getNumComensales()) : new ArrayList<>());
         // Title for the form page, used when creating or editing
         model.addAttribute("tituloPagina", tituloPagina);
         model.addAttribute("tituloCabecera", tituloCabecera);
@@ -63,7 +63,10 @@ public class ReservaController {
     public String mostrarFormulario(Model model) {
         ReservaFormDTO reservaForm = new ReservaFormDTO();
         reservaForm.setFecha(LocalDate.now());
-        reservaForm.setNumComensales(1); // Set a default value
+        reservaForm.setNumComensales(1);
+        reservaForm.setEmailCliente("");
+        reservaForm.setEmailCliente("");
+        reservaForm.setTelefono("");
 
         // Llamada al helper con los títulos deseados para "nueva Reserva".
         cargarDatosModelo(model, reservaForm, new ArrayList<>(), false,

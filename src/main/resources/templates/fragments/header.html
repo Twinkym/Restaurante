@@ -23,7 +23,14 @@
                         <li><a class="dropdown-item" th:href="@{/menus/vegetariano}">Vegetariano</a> </li>
                     </ul>
                 </div>
-                <a class="btn mb-1 me-2" th:classappend="${#httpServletRequest?.requestURI?.contains('/contacto')} ? 'btn-success' : 'btn-outline-success'" th:href="@{/contacto}">Contacto</a>
+                <a class="btn mb-1 me-2"
+                   th:classappend="${#httpServletRequest?.requestURI?.contains('/contacto')} ? 'btn-success' : 'btn-outline-success'"
+                   th:href="@{/contacto/nuevo}">
+                    <i class="fa-solid fa-envelope me-2"></i>Contacto
+                </a>
+
+
+
 
                 <!-- Botón Logín -->
                 <button class="btn btn-outline-secondary mb-1 me-2" data-bc-target="#modalLogin" data-bs-toggle="modal">Iniciar sesión</button>

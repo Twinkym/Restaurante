@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${tituloPagina}">Formulario de Contacto</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}" defer></script>
+</head>
+<body>
+
+<!-- Cabecera común -->
+<div th:replace="~{fragments/header :: header(${tituloCabecera})}"></div>
+
+<!-- Contenido principal -->
+<main class="container mt-4">
+    <h2 th:text="${tituloContenido}">Contáctanos</h2>
+
+    <!-- Formulario de contacto -->
+    <form th:action="@{/contacto}" th:object="${contactoForm}" method="post" class="row g-3 needs-validation" novalidate>
+        <!-- Campo: Nombre -->
+        <div class="col-md-6">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required>
+            <div class="invalid-feedback">Por favor, introduce tu nombre.</div>
+        </div>
+
+        <!-- Campo: Correo electrónico -->
+        <div class="col-md-6">
+            <label for="correoElectronico" class="form-label">Correo electrónico</label>
+            <input type="email" th:field="*{correoElectronico}" class="form-control" id="correoElectronico" required>
+            <div class="invalid-feedback">Introduce un correo electrónico válido.</div>
+        </div>
+
+        <!-- Campo: Asunto -->
+        <div class="col-12">
+            <label for="asunto" class="form-label">Asunto</label>
+            <input type="text" th:field="*{asunto}" class="form-control" id="asunto" required>
+            <div class="invalid-feedback">Por favor, indica el asunto del mensaje.</div>
+        </div>
+
+        <!-- Campo: Mensaje -->
+        <div class="col-12">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea th:field="*{mensaje}" class="form-control" id="mensaje" rows="5" required></textarea>
+            <div class="invalid-feedback">Por favor, escribe tu mensaje.</div>
+        </div>
+
+        <!-- Botón enviar -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Enviar mensaje</button>
+        </div>
+    </form>
+</main>
+
+<!-- Pie de página común -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>
