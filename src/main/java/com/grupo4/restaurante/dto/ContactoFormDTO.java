@@ -3,6 +3,7 @@ package com.grupo4.restaurante.dto;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull; // Importación necesaria
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,9 +35,10 @@ public class ContactoFormDTO {
     @Size(max = 1000, message = "El mensaje no puede exceder los 1000 caracteres")
     private String mensaje;
 
+    @NotNull(message = "Debes aceptar la política de privacidad para enviar tu mensaje.")
     @AssertTrue(message = "Debes aceptar la política de privacidad para enviar tu mensaje.")
-    private boolean aceptaPrivacidad; // CheckBox para consentimiento de la política de privacidad.
+    private Boolean aceptaPrivacidad; // CheckBox para consentimiento de la política de privacidad.
 
-    private boolean aceptaMarketing; // Checkbox para las comunicaciones de marketing.
+    private Boolean aceptaMarketing; // Checkbox para las comunicaciones de marketing.
 
 }
