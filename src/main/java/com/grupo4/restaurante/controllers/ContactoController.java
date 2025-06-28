@@ -3,7 +3,10 @@ package com.grupo4.restaurante.controllers;
 import com.grupo4.restaurante.dto.ContactoFormDTO;
 import com.grupo4.restaurante.services.EmailService;
 import jakarta.validation.Valid;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,25 +24,30 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @version 1.0
  * @since 2025-06-25
  */
+@Data
 @Controller
-@RequestMapping("/contacto")  // URL base para este controlador.
+@RequestMapping("/contacto_form")  // URL base para este controlador.
 @RequiredArgsConstructor
 public class ContactoController {
 
     private final EmailService emailService; // Inyecta servicio de envío de correos.
+    private static final Logger logger = LoggerFactory.getLogger(ContactoController.class); // Instancia del logger.
 
     /*
      * Maneja peticiones GET a /contacto para mostrar el formulario de contacto.
+     * En los Mapeos de las funciones no necesitas indicar la ruta, ya que lo hacemos en la clase con RequestMapping("/contacto")
      * @param modelo de Spring Model para pasar datos a la vista.
      * @return El nombre de la plantilla thymeleaf para el formulario de contacto.
      */
-    @GetMapping
+    @GetMapping("/nuevo")
     public String mostrarFormularioContacto(Model model) {
         model.addAttribute("contactoForm", new ContactoFormDTO());
-        model.addAttribute("tituloPagina", "Contacta con Nosotros");
-        model.addAttribute("footerType", "footer-contacto");
-        return "contacto";
+        model.addAttribute("tituloPagina", "Formulario de Contacto");
+        model.addAttribute("tituloCabecera", "Contacto");
+        model.addAttribute("tituloContenido", "Envíanos tu mensaje");
+        return "contacto_form";
     }
+
 
     /**
      * Procesa los datos enviados desde el formulario de contacto (POST).
@@ -54,58 +62,77 @@ public class ContactoController {
     @PostMapping
     public String procesarFormularioContacto(@Valid @ModelAttribute("contactoForm") ContactoFormDTO contactoFormDTO,
                                              BindingResult bindingResult,
-                                             RedirectAttributes redirectAttributes,
-                                             Model model) {
-        // Si hay errores de validación (definidos en ContactoFormDTO),
-        // volvemos a mostrar el formulario con los mensajes de error.
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("tituloPagina", "Contacta con Nosotros"); // Mantiene el título de la página.
-            // Los errores de validación se adjuntan automáticamente al modelo por BindingResult.
-            return "contacto";  // Vuelve a la vista 'contacto.html' para mostrar los errores.
-        }
+                                             Model model,
+                                             RedirectAttributes redirectAttributes) {
+            // Sí hay errores de validación (definidos en ContactoFormDTO),
+            // Validaciones del lado del servidor.
+            // Volvemos a mostrar el formulario con los mensajes de error.
+            if (bindingResult.hasErrors()) {
+                model.addAttribute("contactoForm", contactoFormDTO);
+                model.addAttribute("error", "Por favor, corrige los errores en el formulario.");
 
-        // Si la validación es exitosa, procede con el envío del correo.
-        String emailSubjectForRestaurant = "Nuevo mensaje de contacto de " + contactoFormDTO.getNombre();
-        String emailBodyForRestaurant = String.format(
-                "Nombre: %s\n" +
-                "Email: %s\n" +
-                "Asunto: %s\n" +
-                "Mensaje: \n%s\n\n" +
-                "Acepta Privacidad: %b\n" +
-                "Acepta Marketing: %b",
-                contactoFormDTO.getNombre(),
-                contactoFormDTO.getEmail(),
-                contactoFormDTO.getAsunto(),
-                contactoFormDTO.getMensaje(),
-                contactoFormDTO.isAceptaPrivacidad(),
-                contactoFormDTO.isAceptaMarketing()
-        );
-
-        // Intenta enviar el email al restaurante (puedes cambiar 'fromEmail' a un email fijo del restaurante)
-        boolean restaurantEmailSent = emailService.sendSimpleEmail(
-                emailService.getFromEmail(),
-                emailSubjectForRestaurant,
-                emailBodyForRestaurant
-        );
-
-        // Envía un correo de confirmación al usuario
-        boolean confirmationEmailSent = emailService.sendContactConfirmationEmail(
-                contactoFormDTO.getEmail(),
-                contactoFormDTO.getNombre(),
-                contactoFormDTO.getMensaje()
-        );
-
-        // Manejo de resultados y mensajes flash para el usuario.
-        if (restaurantEmailSent) {
-            redirectAttributes.addFlashAttribute("mensaje", "¡Gracias por tu mensaje! Lo hemos recibido y te responderemos pronto.");
-            if (!confirmationEmailSent) {
-                redirectAttributes.addFlashAttribute("error", "Tu mensaje ha sido enviado, pero no pudimos enviarte un correo de confirmación.");
+                model.addAttribute("tituloPagina", "Restaurante ERP - Contacto");
+                model.addAttribute("tituloCabecera", "Contacta con Nosotros");
+                model.addAttribute("tituloContenido", "Envíanos tu Mensaje.");
+                model.addAttribute("footerType", "fragments-contacto :: footerContacto");
+                return "contacto";  // Vuelve a la vista 'contacto_form.html' para mostrar los errores.
             }
-        } else {
-            redirectAttributes.addFlashAttribute("error", "Lo sentimos, hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.");
-        }
 
-        // Patron PRG (Post/Redirect/Get) para evitar reenvió de formularios.
-        return "redirect:/contacto";
+            try {
+                // Si la validación es exitosa, procede con el envío del correo.
+                String emailSubjectForRestaurant = "Nuevo mensaje de contacto de " + contactoFormDTO.getNombre();
+                String emailBodyForRestaurant = String.format(
+                        """
+                        Nombre: %s
+                        Email: %s
+                        Asunto: %s
+                        Mensaje:
+                        %s
+                        
+                        Acepta Privacidad: %b
+                        Acepta Marketing: %b
+                        """,
+                        contactoFormDTO.getNombre(),
+                        contactoFormDTO.getEmail(),
+                        contactoFormDTO.getAsunto(),
+                        contactoFormDTO.getMensaje(),
+                        contactoFormDTO.getAceptaPrivacidad(),
+                        contactoFormDTO.getAceptaMarketing()
+                );
+
+                String restauranteEmail = "contacto@restaurantegrupo4.com";
+
+                boolean restaurantEmailSent = emailService.sendSimpleEmail(
+                        restauranteEmail, // Destinatario.
+                        emailSubjectForRestaurant,
+                        emailBodyForRestaurant
+                );
+
+                // Envía un correo de confirmación al usuario
+                boolean confirmationEmailSent = false;
+                if (restaurantEmailSent) {
+                    confirmationEmailSent = emailService.sendContactConfirmationEmail(
+                            contactoFormDTO.getEmail(),
+                            contactoFormDTO.getNombre(),
+                            contactoFormDTO.getMensaje()
+                    );
+                }
+
+                // Manejo de resultados y mensajes flash para el usuario.
+                if (restaurantEmailSent && confirmationEmailSent) {
+                    redirectAttributes.addFlashAttribute("mensaje", "¡Gracias por tu mensaje! Lo hemos recibido y te responderemos pronto.");
+                } else if (restaurantEmailSent){
+                    redirectAttributes.addFlashAttribute("mensaje", "¡Tu mensaje ha sido enviado! Pero tuvimos un problema al enviarte la confirmación por correo.");
+                    redirectAttributes.addFlashAttribute("error", "Por favor, revisa tu carpeta de spam o inténtalo de nuevo más tarde si no recibes la confirmación.");
+                } else {
+                    redirectAttributes.addFlashAttribute("error", "Lo sentimos, hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.");
+                }
+            } catch (Exception e) {
+                   //System.out.println("Error al enviar al correo de contacto: " + e.getMessage());
+                    logger.error("Error al enviar el correo de contacto: {}", e.getMessage(), e);  // Usamos {} el mensaje y 'e' para el stack tracé.
+                    redirectAttributes.addFlashAttribute("error", "Hubo un error al procesar tu mensaje. intentalo de nuevo.");
+                }
+                // Patron PRG (Post/Redirect/Get) para evitar reenvió de formularios.
+                return "redirect:/contacto";
     }
 }

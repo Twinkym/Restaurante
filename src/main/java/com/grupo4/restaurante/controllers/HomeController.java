@@ -28,8 +28,9 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model, HttpServletRequest request) {
-        model.addAttribute("mensaje", "Bienvenido a Restaurante");
-        model.addAttribute("pagina", new PaginaDTO("Inicio | Restaurante"));
+        model.addAttribute("tituloPagina", "Restaurante ERP");
+        model.addAttribute("tituloCabecera", ("Inicio | Restaurante"));
+        model.addAttribute("tituloContenido", "Bienvenido a Su Gestor de Restaurante V.1.0.0");
         model.addAttribute("uri", request.getRequestURI());
         model.addAttribute("footerType", "footer-default");
         return "home";  // Se refiere al archivo templates/home.html
@@ -40,7 +41,9 @@ public class HomeController {
      */
     @GetMapping("/error")
     public String error(Model model, HttpServletRequest request ) {
-        model.addAttribute("pagina", new PaginaDTO("Error"));
+        model.addAttribute("pagina", new PaginaDTO("Error de la Aplicación"));
+        model.addAttribute("tituloPagina", "Error | Restaurante ERP");
+        model.addAttribute("tituloCabecera", "Ha ocurrido un Error");
         model.addAttribute("uri", request.getRequestURI());
         return "error";     // Se refiere a la vista error para mostrar la página 404(sin extensión .html)
     }
