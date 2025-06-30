@@ -92,9 +92,18 @@ Cada grupo presenta el proyecto en 15 minutos.
   
 ![Home, tamaño menu y logo arreglados, carrusel width normalizado con height.](https://github.com/user-attachments/assets/e38d3cbd-b766-4f8f-8341-775cd6f90494)
 
+- Captura de la pagina del formulario para crear una nueva reserva.
+![CAPTURA-FORMULARIO-CREAR-NUEVA-RESERVA](https://github.com/user-attachments/assets/da10741d-1a6e-46fc-8ae4-2eeae39b50e6)
+
+
+- Pagina que muestra la lista de reservas confimadas.
+![Captura-gestionreservas](https://github.com/user-attachments/assets/143092b4-9973-48c2-8ec1-f3a35ff66eb6)
 
 - Imagen de la pagina home con la implementación de logotipo, titulo, menu-circular, carrusel y footer, los elementos título, menu-circular se cargan dinámicamente mediante fragments,
 - las imágenes desde la carpeta img dentro de static resources, siguiente captura corrección de posiciones, tamaños de imágenes y opcional funcionalidad de los botones.
+
+- Diagrama relacional.
+![Diagram-RestauranteDB](https://github.com/user-attachments/assets/39476b36-bef9-4da0-b505-28e9e9b5c55b)
 
 ## 📁 Estructura De Proyectos
   ![img_2.png](img_2.png)
