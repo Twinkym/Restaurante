@@ -1,3 +1,4 @@
+<!-- templates/contacto/contacto.html -->
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -13,11 +14,11 @@
 <div th:replace="~{fragments/header :: header(${tituloCabecera})}"></div>
 
 <!-- Contenido principal -->
-<main class="container mt-4">
-    <h2 th:text="${tituloContenido}">Contáctanos</h2>
+<main class="container mt-5">
+    <h1 th:text="${tituloContenido}" class="mb-4 text-center">Formulario de Contácto</h1>
 
     <!-- Formulario de contacto -->
-    <form th:action="@{/contacto}" th:object="${contactoForm}" method="post" class="row g-3 needs-validation" novalidate>
+    <form th:action="@{/contacto}" th:object="${contactoDTO}" method="post" class="row g-3 needs-validation" novalidate>
         <!-- Campo: Nombre -->
         <div class="col-md-6">
             <label for="nombre" class="form-label">Nombre</label>
