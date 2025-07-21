@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.time.LocalDateTime;
 
 @Controller
@@ -55,6 +54,9 @@ public class ContactoController {
     @GetMapping("/contacto")
     public String mostrarFormulario(Model model) {
         model.addAttribute("contactoDTO", new ContactoDTO());
+        model.addAttribute("tituloPagina", "Formulario de contacto");
+        model.addAttribute("tituloCabecera", "Contáctanos");
+        model.addAttribute("tituloContenido", "Envianos tu mensaje.");
         return "contacto/contacto";
     }
 

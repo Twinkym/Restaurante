@@ -55,8 +55,8 @@ public class SecurityConfig {
      * Configurar los permisos de acceso según rutas y roles-
      */
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth.requestMatchers("/", "/login", "/error", "/reservas/**", "/menus/**", "templates/**", "/css/**", "/js/**", "/img/**", "/webjars/**").permitAll()
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/", "/home", "/contacto/**", "/registro", "/error", "/login", "/css/**", "/js/**", "/img/**", "/webjars/**").permitAll()
                 .requestMatchers("/productos/**", "empleados/**").hasAnyRole("ADMIN", "ENCARGADO")
                 .anyRequest().authenticated()
                 )
