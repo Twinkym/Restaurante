@@ -24,7 +24,7 @@
                     </ul>
                 </div>
                 <a class="btn mb-1 me-2"
-                   th:classappend="${#httpServletRequest?.requestURI?.contains('/contacto')} ? 'btn-success' : 'btn-outline-success'"
+                   th:classappend="${#httpServletRequest?.requestURI?.contains('contacto/contacto')} ? 'btn-success' : 'btn-outline-success'"
                    th:href="@{/contacto/nuevo}">
                     <i class="fa-solid fa-envelope me-2"></i>Contacto
                 </a>
@@ -33,9 +33,11 @@
 
 
                 <!-- Botón Logín -->
-                <button class="btn btn-outline-secondary mb-1 me-2" data-bc-target="#modalLogin" data-bs-toggle="modal">Iniciar sesión</button>
-                <!-- Botón Logín -->
-                <button class="btn btn-outline-secondary mb-1 me-2" data-bc-target="#modalRegistro" data-bs-toggle="modal">Registrarse</button>
+                <a class="btn btn-outline-secondary mb-1 me-2" th:href="@{/auth/login}">Iniciar Sesión</a>
+                <!-- <button class="btn btn-outline-secondary mb-1 me-2" data-bc-target="#modalLogin" data-bs-toggle="modal">Iniciar sesión</button> -->
+                <!-- Botón Registro -->
+                <a class="btn btn-outline-secondary mb-1 me-2" th:href="@{/auth/registro}">Registrarse</a>
+                <!-- <button class="btn btn-outline-secondary mb-1 me-2" data-bc-target="#modalRegistro" data-bs-toggle="modal">Registrarse</button> -->
 
             </div>
         </div>

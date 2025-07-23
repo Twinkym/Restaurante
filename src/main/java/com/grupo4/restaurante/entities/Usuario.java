@@ -1,6 +1,7 @@
 package com.grupo4.restaurante.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
@@ -17,7 +18,10 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = false)
+    private String nombre;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -25,4 +29,5 @@ public class Usuario {
 
     @Column(nullable = false)
     private String rol;  // EJ: "CLIENTE", "ADMIN", "COMENSALES", ETC....
+
 }

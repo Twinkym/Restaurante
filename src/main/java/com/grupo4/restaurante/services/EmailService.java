@@ -1,5 +1,7 @@
 package com.grupo4.restaurante.services;
 
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
@@ -33,27 +37,30 @@ public class EmailService {
     private String fromEmail;
 
     /*
-     * Envía un correo electrónico de texto plano.
+     * Envía un correo electrónico con contenido HTML.
      *
      * @param to Dirección de correo del destinatario.
      * @param subject Asunto del correo.
      * @param text Cuerpo del mensaje del correo.
      * @return true si el correo se envió con éxito, false en caso contrario.
      */
-    public boolean sendSimpleEmail(String to, String subject, String text) {
+    @Async
+    public boolean sendSimpleEmail(String to, String subject, String htmlContent) {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper;
         try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(fromEmail);
-            message.setTo(to);
-            message.setSubject(subject);
-            message.setText(text);
+            helper = new MimeMessageHelper(message, true, "UTF-8");
+            helper.setFrom(fromEmail);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
 
             mailSender.send(message);
-            logger.info("Correo enviado con éxito a '{}' con asunto '{}'", to, subject);
+            logger.info("Correo HTML enviado con éxito a '{}' con asunto '{}'", to, subject);
             return true;
-        } catch (MailException e) {
+        } catch (MessagingException | MailException e) {
             // Captura cualquier excepción relacionada con el envío de correo.
-            logger.error("Error al enviar correo a '{}' con asunto '{}' : {}", to, subject, e.getMessage());
+            logger.error("Error al enviar correo HTML a '{}' con asunto '{}' : {}", to, subject, e.getMessage());
             return false;
         }
     }
