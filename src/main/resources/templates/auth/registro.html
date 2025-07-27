@@ -30,8 +30,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <form class="border p-4 rounded shadow-sm bg-light" method="post" th:action="@{/auth/registro}" th:object="${usuario}">
+                <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                </div>
+
                 <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
-                
+
                 <!-- Nombre -->
                 <div class="mb-3">
                     <label class="form-label" for="nombre">Nombre completo</label>

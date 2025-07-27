@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 /**
  * Servicio encargado de la lógica de envío de correos electrónicos.
  * Utiliza JavaMailSender de Spring para interactuar con el servidor SMTP.
- * Proporciona un mé to-do para enviar mensajes de texto plano.
+ * Proporciona un mé to-do para enviar mensajes de texto plano y HTML.
  *
  * @autor David De La Puente Enriquez - KirgoDev
  * @version 1.0
- * @since 2025-06-25
+ * @since 2025-07-23
  */
 
 @RequiredArgsConstructor
@@ -37,6 +37,29 @@ public class EmailService {
     private String fromEmail;
 
     /*
+     * Envía un correo electrónico de texto plano.
+     *
+     * @param to Dirección del correo del destinatario.
+     * @param subject Asunto del correo.
+     * @param text Cuerpo del mensaje del correo.
+     * @return true si el correo se envió con éxito, false en caso contrario.
+     */
+    @Async
+    public void sendSimpleEmail(String to, String subject, String text) {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(fromEmail);
+            message.setTo(to);
+            message.setSubject(subject);
+            message.setText(text);
+
+            mailSender.send(message);
+            logger.info("Correo de texto plano enviado con éxito a '{}' con asunto '{}'", to, subject);
+        } catch (MailException e) {
+            logger.error("Error al enviar el correo de texto plano a '{}' con asunto '{}' : {}", to, subject, e.getMessage());
+        }
+    }
+    /*
      * Envía un correo electrónico con contenido HTML.
      *
      * @param to Dirección de correo del destinatario.
@@ -45,7 +68,7 @@ public class EmailService {
      * @return true si el correo se envió con éxito, false en caso contrario.
      */
     @Async
-    public boolean sendSimpleEmail(String to, String subject, String htmlContent) {
+    public void sendHtmlEmail(String to, String subject, String htmlContent) {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper;
         try {
@@ -57,11 +80,11 @@ public class EmailService {
 
             mailSender.send(message);
             logger.info("Correo HTML enviado con éxito a '{}' con asunto '{}'", to, subject);
-            return true;
+
         } catch (MessagingException | MailException e) {
             // Captura cualquier excepción relacionada con el envío de correo.
             logger.error("Error al enviar correo HTML a '{}' con asunto '{}' : {}", to, subject, e.getMessage());
-            return false;
+
         }
     }
 
@@ -72,11 +95,10 @@ public class EmailService {
      * @param userMessage El mensaje original del usuario.
      * @return true si el correo se envió con éxito, false en caso contrario.
      */
-    public boolean sendContactConfirmationEmail(String toEmail, String userName, String userMessage) {
+    public void sendContactConfirmationEmail(String toEmail, String userName, String userMessage) {
         String subject = "Confirmación de tu mensaje a Restaurante Grupo 4";
-        String body = String.format(
-                """
-                        Hola %s,\s
+        String body = String.format("""
+                        Hola %s\s
                         
                         Hemos recibido tu contacto con el siguiente contenido:
                         
@@ -85,8 +107,7 @@ public class EmailService {
                         
                         Saludos cordiales,
                         El equipo de Restaurante Grupo 4""",
-                userName, userMessage
-        );
-        return sendSimpleEmail(toEmail, subject, body);
+                userName, userMessage);
+        sendSimpleEmail(toEmail, subject, body);
     }
 }
