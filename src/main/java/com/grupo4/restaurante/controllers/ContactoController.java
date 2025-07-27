@@ -1,12 +1,24 @@
 package com.grupo4.restaurante.controllers;
 
-import com.grupo4.restaurante.dto.ContactoFormDTO;
-import com.grupo4.restaurante.services.EmailService;
+/*
+ * Mostrar el formulario en /contacto(GET).
+ * Procesar el envío (POST).
+ * Validar el formulario con @Valid.
+ * Guardar el mensaje como entidad Contacto.
+ * Redirigir a una vista de confirmación o a la misma con errores.
+ *
+ * @author David De La Puente - KirgoDev
+ * @version 1.1
+ * @since 2025-07-02
+ *
+ */
+
+import com.grupo4.restaurante.dto.ContactoDTO;
+import com.grupo4.restaurante.entities.Contacto;
+import com.grupo4.restaurante.repositories.ContactoRepository;
+import com.grupo4.restaurante.services.TitleService;
 import jakarta.validation.Valid;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,125 +26,68 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import java.time.LocalDateTime;
 
-/**
- * Controlador Spring MVC para la gestión del formulario de contacto.
- * Maneja la visualización del formulario y el procesamiento de los datos enviados.
- *
- * @author David De La Puente - KirgoDev - Grupo 4
- * @version 1.0
- * @since 2025-06-25
- */
-@Data
 @Controller
-@RequestMapping("/contacto_form")  // URL base para este controlador.
 @RequiredArgsConstructor
+@RequestMapping("/contacto")
 public class ContactoController {
 
-    private final EmailService emailService; // Inyecta servicio de envío de correos.
-    private static final Logger logger = LoggerFactory.getLogger(ContactoController.class); // Instancia del logger.
+    private final TitleService titleService;
+    private final ContactoRepository contactoRepository;
 
-    /*
-     * Maneja peticiones GET a /contacto para mostrar el formulario de contacto.
-     * En los Mapeos de las funciones no necesitas indicar la ruta, ya que lo hacemos en la clase con RequestMapping("/contacto")
-     * @param modelo de Spring Model para pasar datos a la vista.
-     * @return El nombre de la plantilla thymeleaf para el formulario de contacto.
-     */
     @GetMapping("/nuevo")
     public String mostrarFormularioContacto(Model model) {
-        model.addAttribute("contactoForm", new ContactoFormDTO());
-        model.addAttribute("tituloPagina", "Formulario de Contacto");
-        model.addAttribute("tituloCabecera", "Contacto");
-        model.addAttribute("tituloContenido", "Envíanos tu mensaje");
-        return "contacto_form";
+        model.addAttribute("contactoDTO", new ContactoDTO());
+        model.addAttribute("tituloPagina", titleService.getTituloPagina("contacto"));
+        model.addAttribute("tituloCabecera", titleService.getTituloCabecera("contacto"));
+        model.addAttribute("tituloContenido", "Formulario de Contacto");
+
+        return "contacto/contacto";
+    }
+    /*
+     * Muestra el formulario de contacto.
+     *
+     * @param model el modelo de datos para la vista.
+     * @return la vista del formulario de contacto.
+     */
+    @GetMapping("/contacto")
+    public String mostrarFormulario(Model model) {
+        model.addAttribute("contactoDTO", new ContactoDTO());
+        model.addAttribute("tituloPagina", "Formulario de contacto");
+        model.addAttribute("tituloCabecera", "Contáctanos");
+        model.addAttribute("tituloContenido", "Envianos tu mensaje.");
+        return "contacto/contacto";
     }
 
-
-    /**
-     * Procesa los datos enviados desde el formulario de contacto (POST).
-     * Realiza validación de los datos y envía un correo electrónico.
+    /*
+     * Procesa el formulario de contacto.
      *
-     * @param contactoFormDTO El DTO que contiene los datos del formulario (se valida automáticamente por @Valid).
-     * @param bindingResult   Contiene los resultados de la validación.
-     * @param redirectAttributes Utilizado para añadir mensajes flash (ej. éxito/error) para la redirección.
-     * @param model Para añadir atributos al modelo si se vuelve a mostrar el formulario por errores de validación.
-     * @return Una redirección a la página de contacto o la misma página si hay errores de validación.
+     * @param contactoDTO datos del formulario.
+     * @param bindingResult resultados de la validación.
+     * @para model modelo para la vista.
+     * @return redirección o vista con errores.
      */
-    @PostMapping
-    public String procesarFormularioContacto(@Valid @ModelAttribute("contactoForm") ContactoFormDTO contactoFormDTO,
-                                             BindingResult bindingResult,
-                                             Model model,
-                                             RedirectAttributes redirectAttributes) {
-            // Sí hay errores de validación (definidos en ContactoFormDTO),
-            // Validaciones del lado del servidor.
-            // Volvemos a mostrar el formulario con los mensajes de error.
-            if (bindingResult.hasErrors()) {
-                model.addAttribute("contactoForm", contactoFormDTO);
-                model.addAttribute("error", "Por favor, corrige los errores en el formulario.");
+    @PostMapping("/contacto")
+    public String procesarFormulario(
+            @Valid @ModelAttribute("contactoDTO") ContactoDTO contactoDTO,
+            BindingResult bindingResult,
+            Model model) {
+        if (bindingResult.hasErrors()) {
+            return "contacto";  // vuelve al formulario con errores.
+        }
 
-                model.addAttribute("tituloPagina", "Restaurante ERP - Contacto");
-                model.addAttribute("tituloCabecera", "Contacta con Nosotros");
-                model.addAttribute("tituloContenido", "Envíanos tu Mensaje.");
-                model.addAttribute("footerType", "fragments-contacto :: footerContacto");
-                return "contacto";  // Vuelve a la vista 'contacto_form.html' para mostrar los errores.
-            }
+        // Crear entidad Contacto a partir del DTO
+        Contacto contacto = Contacto.builder()
+                .nombre(contactoDTO.getNombre())
+                .email(contactoDTO.getEmail())
+                .asunto(contactoDTO.getAsunto())
+                .mensaje(contactoDTO.getMensaje())
+                .fecha(LocalDateTime.now())
+                .build();
 
-            try {
-                // Si la validación es exitosa, procede con el envío del correo.
-                String emailSubjectForRestaurant = "Nuevo mensaje de contacto de " + contactoFormDTO.getNombre();
-                String emailBodyForRestaurant = String.format(
-                        """
-                        Nombre: %s
-                        Email: %s
-                        Asunto: %s
-                        Mensaje:
-                        %s
-                        
-                        Acepta Privacidad: %b
-                        Acepta Marketing: %b
-                        """,
-                        contactoFormDTO.getNombre(),
-                        contactoFormDTO.getEmail(),
-                        contactoFormDTO.getAsunto(),
-                        contactoFormDTO.getMensaje(),
-                        contactoFormDTO.getAceptaPrivacidad(),
-                        contactoFormDTO.getAceptaMarketing()
-                );
+        contactoRepository.save(contacto);
 
-                String restauranteEmail = "contacto@restaurantegrupo4.com";
-
-                boolean restaurantEmailSent = emailService.sendSimpleEmail(
-                        restauranteEmail, // Destinatario.
-                        emailSubjectForRestaurant,
-                        emailBodyForRestaurant
-                );
-
-                // Envía un correo de confirmación al usuario
-                boolean confirmationEmailSent = false;
-                if (restaurantEmailSent) {
-                    confirmationEmailSent = emailService.sendContactConfirmationEmail(
-                            contactoFormDTO.getEmail(),
-                            contactoFormDTO.getNombre(),
-                            contactoFormDTO.getMensaje()
-                    );
-                }
-
-                // Manejo de resultados y mensajes flash para el usuario.
-                if (restaurantEmailSent && confirmationEmailSent) {
-                    redirectAttributes.addFlashAttribute("mensaje", "¡Gracias por tu mensaje! Lo hemos recibido y te responderemos pronto.");
-                } else if (restaurantEmailSent){
-                    redirectAttributes.addFlashAttribute("mensaje", "¡Tu mensaje ha sido enviado! Pero tuvimos un problema al enviarte la confirmación por correo.");
-                    redirectAttributes.addFlashAttribute("error", "Por favor, revisa tu carpeta de spam o inténtalo de nuevo más tarde si no recibes la confirmación.");
-                } else {
-                    redirectAttributes.addFlashAttribute("error", "Lo sentimos, hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.");
-                }
-            } catch (Exception e) {
-                   //System.out.println("Error al enviar al correo de contacto: " + e.getMessage());
-                    logger.error("Error al enviar el correo de contacto: {}", e.getMessage(), e);  // Usamos {} el mensaje y 'e' para el stack tracé.
-                    redirectAttributes.addFlashAttribute("error", "Hubo un error al procesar tu mensaje. intentalo de nuevo.");
-                }
-                // Patron PRG (Post/Redirect/Get) para evitar reenvió de formularios.
-                return "redirect:/contacto";
+        return "redirect:/contacto-confirmación";
     }
 }

@@ -37,7 +37,7 @@ public class HomeController {
     }
 
     /**
-     * Página de error 404 o acceso denegado.
+     * Página de error error o acceso denegado.
      */
     @GetMapping("/error")
     public String error(Model model, HttpServletRequest request ) {
@@ -45,6 +45,6 @@ public class HomeController {
         model.addAttribute("tituloPagina", "Error | Restaurante ERP");
         model.addAttribute("tituloCabecera", "Ha ocurrido un Error");
         model.addAttribute("uri", request.getRequestURI());
-        return "error";     // Se refiere a la vista error para mostrar la página 404(sin extensión .html)
+        return "error";     // Se refiere a la vista error para mostrar la página error(sin extensión .html)
     }
 }
