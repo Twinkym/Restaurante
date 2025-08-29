@@ -106,9 +106,10 @@ Cada grupo presenta el proyecto en 15 minutos.
 ![Diagram-RestauranteDB](https://github.com/user-attachments/assets/39476b36-bef9-4da0-b505-28e9e9b5c55b)
 
 ## 📁 Estructura De Proyectos
-  ![img_2.png](img_2.png)
+  ![estructura_maven-300x245 Imagen obtenida de la pagina https://adictosaltrabajo.com/2016/11/15/mavenizacion-de-proyectos-legacy mientras defino una imagen de la estructura del proyecto Restaurante.](https://github.com/user-attachments/assets/a8b25803-0ee8-43ea-b046-dea0f8ce9a8a)
 
 ## ⚙️ Configuración Del Entorno
+
   1. Prerrequisitos
     * JDK 24 O SUPERIOR
     * Maven 3.8+
