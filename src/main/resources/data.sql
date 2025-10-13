@@ -29,7 +29,12 @@ DELETE FROM restaurante; -- Esta tabla solo tiene una fila, pero la eliminamos p
 -- SET REFERENTIAL_INTEGRATE TRUE; -- Para H2/HSQLDB
 -- PRAGMA foreign_keys = ON;         -- Para SQLite
 -- ALTER TABLE tabla_hija CHECK CONSTRAINT FK_restriction; -- Para SQL Server (por tabla)
-
+ALTER TABLE mesa AUTO_INCREMENT = 1;
+ALTER TABLE plato AUTO_INCREMENT = 1;
+ALTER TABLE productos AUTO_INCREMENT = 1;
+ALTER TABLE categorias AUTO_INCREMENT = 1;
+ALTER TABLE restaurante AUTO_INCREMENT = 1;
+ALTER TABLE reserva AUTO_INCREMENT = 1;
 
 -- ===========================
 -- INSERCIÓN DE CATEGORÍAS
@@ -65,14 +70,14 @@ INSERT INTO restaurante (id, nombre, direccion, telefono, nif, email, sitio_web,
 -- INSERCIÓN DE DATOS DE MESAS
 -- ===========================
 -- Si 'mesa' tiene un ID autoincrement, no debes especificar el ID
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (1, 2, true);
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (2, 4, true);
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (3, 4, false);
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (4, 6, true);
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (5, 2, true);
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (6, 6, true);
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (7, 8, false);
-INSERT INTO mesa (numero, capacidad, disponible) VALUES (8, 4, true);
+INSERT INTO mesa (id, numero, capacidad, disponible) VALUES (1, 1, 2, true);
+INSERT INTO mesa (id, numero, capacidad, disponible) VALUES (2, 2, 4, true);
+INSERT INTO mesa (id, numero, capacidad, disponible) VALUES (3, 3, 4, false);
+INSERT INTO mesa (id, numero, capacidad, disponible) VALUES (4, 4, 6, true);
+INSERT INTO mesa (id, numero, capacidad, disponible) VALUES (5, 5, 2, true);
+INSERT INTO mesa (id, numero, capacidad, disponible) VALUES (6, 6, 6, true);
+INSERT INTO mesa (id,numero, capacidad, disponible) VALUES (7, 7, 8, false);
+INSERT INTO mesa (id, numero, capacidad, disponible) VALUES (8, 8, 4, true);
 
 -- ===============================
 -- INSERCIÓN DE DATOS PLATOS

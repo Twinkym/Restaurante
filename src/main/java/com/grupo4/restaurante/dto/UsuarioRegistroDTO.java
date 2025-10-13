@@ -1,5 +1,19 @@
 package com.grupo4.restaurante.dto;
 
+/*
+ * Mostrar el formulario en /contacto(GET).
+ * Procesar el envío (POST).
+ * Validar el formulario con @Valid.
+ * Guardar el mensaje como entidad Contacto.
+ * Redirigir a una vista de confirmación o a la misma con errores.
+ *
+ * @author David De La Puente - KirgoDev
+ * @version 1.1
+ * @since 2025-09-06
+ *
+ */
+
+import com.grupo4.restaurante.entities.Rol;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -28,6 +42,6 @@ public class UsuarioRegistroDTO {
     @Email(message = "Debe ser un email válido")
     private String email;
 
-    private String rol = "CLIENTE";  //Valor por defecto.
+    private Rol rol = Rol.CLIENTE;  //Valor por defecto.
 
 }

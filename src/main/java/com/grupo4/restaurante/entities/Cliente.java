@@ -3,6 +3,11 @@ package com.grupo4.restaurante.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Entidad Cliente.
  * @author David De La Puente
@@ -14,7 +19,6 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "clientes")
 @NoArgsConstructor
@@ -30,5 +34,24 @@ public class Cliente {
     private String email;
     private String telefono;
     private Boolean activo;
+
+    public Collection<Object> getReservas() {
+        return Collections.emptyList();
+    }
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reserva> reservas = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "nombre = " + nombre + ", " +
+                "apellido = " + apellido + ", " +
+                "email = " + email + ", " +
+                "telefono = " + telefono + ", " +
+                "activo = " + activo + ")";
+    }
+
 }
 

@@ -36,6 +36,12 @@ public class ContactoController {
     private final TitleService titleService;
     private final ContactoRepository contactoRepository;
 
+    /*
+     * Muestra el formulario de contacto.
+     *
+     * @param model el modelo de datos para la vista.
+     * @return la vista del formulario de contacto.
+     */
     @GetMapping("/nuevo")
     public String mostrarFormularioContacto(Model model) {
         model.addAttribute("contactoDTO", new ContactoDTO());
@@ -45,12 +51,7 @@ public class ContactoController {
 
         return "contacto/contacto";
     }
-    /*
-     * Muestra el formulario de contacto.
-     *
-     * @param model el modelo de datos para la vista.
-     * @return la vista del formulario de contacto.
-     */
+
     @GetMapping("/contacto")
     public String mostrarFormulario(Model model) {
         model.addAttribute("contactoDTO", new ContactoDTO());

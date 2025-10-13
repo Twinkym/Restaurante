@@ -38,16 +38,20 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .userDetailsService(jpaUserDetailService)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/home", "/contacto/**", "/auth/registro", "/error/**", "/login", "/css/**", "/js/**", "/img/**", "/webjars/**").permitAll()
-                .requestMatchers("/productos/**", "empleados/**").hasAnyRole("ADMIN", "ENCARGADO")
-                .anyRequest().authenticated()
+
+                .authorizeHttpRequests(auth -> auth
+                    .requestMatchers("/", "/home", "/contacto/**", "/registro", "/error/**", "/login", "/css/**", "/js/**", "/img/**", "/webjars/**").permitAll()
+                    .requestMatchers("/productos/**", "/empleados/**").hasAnyRole("ADMIN", "ENCARGADO")
+                    .requestMatchers("/dashboard/admin/**").hasRole("ADMIN")
+                    .requestMatchers("/dashboard/cliente/**").hasRole("CLIENTE")
+                    .requestMatchers("/dashboard/empleado/**").hasRole("EMPLEADO")
+                    .requestMatchers("/dashboard/gerente/**").hasRole("GERENTE")
+                    .anyRequest().authenticated()
                 )
-                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/", true).permitAll()
+                .userDetailsService(jpaUserDetailService)
+                .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/login-success", true).permitAll()
                 ).logout(logout -> logout.logoutSuccessUrl("/").permitAll()
                 );
         return http.build();
     }
-
-
 }

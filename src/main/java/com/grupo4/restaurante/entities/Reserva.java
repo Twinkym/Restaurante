@@ -49,7 +49,12 @@ public class Reserva {
             joinColumns = @JoinColumn(name = "reserva_id"), // Columna que referencia a la ID de Reserva en la tabla de unión
             inverseJoinColumns = @JoinColumn(name = "plato_id") // Columna que referencia al ID de Plato en la tabla de unión
     )
+    @ToString.Exclude
     private Set<Plato> platosSolicitados = new HashSet<>(); // Usa Set para evitar duplicados y mejor rendimiento, o List si el orden importa
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     // ==============================================
     // Métodos para añadir/eliminar platos (muy recomendables para relaciones @ManyToMany)

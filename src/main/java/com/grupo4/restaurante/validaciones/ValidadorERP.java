@@ -73,42 +73,42 @@ public class ValidadorERP {
     // --- Métodos RESERVADOS PARA VALIDACIONES FUTURAS --- //
 
     /*
-     * Validación placeholder para logica futura de productos.
+     * Validación placeholder para lógica futura de productos.
      */
     public static boolean esProductoValido(Object producto) {
         return producto != null; //
     }
 
     /*
-     * Validación placeholder para logica futura de pedidos.
+     * Validación placeholder para lógica futura de pedidos.
      */
     public static boolean esPedidoValido(Object pedido) {
         return pedido != null; //
     }
 
     /*
-     * Validación placeholder para logica futura de productos.
+     * Validación placeholder para lógica futura de productos.
      */
     public static boolean esEmpleadoValido(Object empleado) {
         return empleado != null; //
     }
 
     /*
-     * Validación placeholder para logica futura de productos.
+     * Validación placeholder para lógica futura de productos.
      */
     public static boolean esClienteValido(Object cliente) {
         return cliente != null; //
     }
 
     /*
-     * Validación placeholder para logica futura de productos.
+     * Validación placeholder para lógica futura de productos.
      */
     public static boolean esProveedorValido(Object proveedor) {
         return proveedor != null; //
     }
 
     /*
-     * Validación placeholder para logica futura de productos.
+     * Validación placeholder para lógica futura de productos.
      */
     public static boolean esCategoriaValido(Object categoria) {
         return categoria != null; //

@@ -1,13 +1,15 @@
 package com.grupo4.restaurante.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "usuarios")
 public class Usuario {
 
@@ -18,7 +20,7 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false, unique = false)
+    @Column(nullable = false)
     private String nombre;
 
     @Column(nullable = false, unique = true)
@@ -27,7 +29,11 @@ public class Usuario {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String rol;  // EJ: "CLIENTE", "ADMIN", "COMENSALES", ETC....
+    private Rol rol;  // EJ: "CLIENTE", "ADMIN", "COMENSALES", ETC....
+
+    @Column(nullable = false)
+    private boolean enabled = false;
 
 }
